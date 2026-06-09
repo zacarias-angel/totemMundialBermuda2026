@@ -1,0 +1,30 @@
+[
+  {
+    "email": "angel.zacarias@thebermuda.com",
+    "name": "Angel",
+    "answers": {},
+    "submitted": {
+      "a-mexico-south-africa": {
+        "goalsA": 1,
+        "goalsB": 0
+      },
+      "a-south-korea-czechia": {
+        "goalsA": 1,
+        "goalsB": 0
+      }
+    },
+    "lastUpdate": "2026-06-03T19:48:35.917Z"
+  },
+  {
+    "email": "lino.sapetti@thebermuda.com",
+    "name": "Lino",
+    "answers": {},
+    "submitted": {
+      "a-mexico-south-africa": {
+        "goalsA": 2,
+        "goalsB": 0
+      }
+    },
+    "lastUpdate": "2026-06-03T19:09:27.598Z"
+  }
+]

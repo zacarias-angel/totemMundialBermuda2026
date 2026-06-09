@@ -1,0 +1,2222 @@
+[
+  {
+    "timestamp": "2026-06-03T17:23:09.275Z",
+    "name": "Angel",
+    "email": "angel.zacarias@thebermuda.com",
+    "score": 0,
+    "answers": [
+      {
+        "questionId": "a-mexico-south-africa",
+        "answer": {
+          "goalsA": 1,
+          "goalsB": 0
+        },
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {
+          "userGoalsA": 1,
+          "userGoalsB": 0,
+          "userResult": "ganador",
+          "correctGoalsA": 0,
+          "correctGoalsB": 0,
+          "correctResult": "empate",
+          "exactScore": false
+        }
+      },
+      {
+        "questionId": "a-south-korea-czechia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "a-czechia-south-africa",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "a-mexico-south-korea",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "a-south-africa-south-korea",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "a-czechia-mexico",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-canada-bosnia-and-herzegovina",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-qatar-switzerland",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-switzerland-bosnia-and-herzegovina",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-canada-qatar",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-switzerland-canada",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-bosnia-and-herzegovina-qatar",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-brazil-morocco",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-haiti-scotland",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-scotland-morocco",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-brazil-haiti",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-scotland-brazil",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-morocco-haiti",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-united-states-paraguay",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-australia-t-rkiye",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-united-states-australia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-t-rkiye-paraguay",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-t-rkiye-united-states",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-paraguay-australia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-germany-curacao",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-ivory-coast-ecuador",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-germany-ivory-coast",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-ecuador-curacao",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-curacao-ivory-coast",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-ecuador-germany",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-netherlands-japan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-sweden-tunisia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-netherlands-sweden",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-tunisia-japan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-japan-sweden",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-tunisia-netherlands",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-belgium-egypt",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-iran-new-zealand",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-belgium-iran",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-new-zealand-egypt",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-egypt-iran",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-new-zealand-belgium",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-spain-cape-verde",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-saudi-arabia-uruguay",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-spain-saudi-arabia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-uruguay-cape-verde",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-cape-verde-saudi-arabia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-uruguay-spain",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-france-senegal",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-iraq-norway",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-france-iraq",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-norway-senegal",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-norway-france",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-senegal-iraq",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-argentina-algeria",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-austria-jordan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-argentina-austria",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-jordan-algeria",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-algeria-austria",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-jordan-argentina",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-portugal-dr-congo",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-uzbekistan-colombia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-portugal-uzbekistan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-colombia-dr-congo",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-colombia-portugal",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-dr-congo-uzbekistan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-england-croatia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-ghana-panama",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-england-ghana",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-panama-croatia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-panama-england",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-croatia-ghana",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-03T19:09:27.595Z",
+    "name": "Lino",
+    "email": "lino.sapetti@thebermuda.com",
+    "score": 0,
+    "answers": [
+      {
+        "questionId": "a-mexico-south-africa",
+        "answer": {
+          "goalsA": 2,
+          "goalsB": 0
+        },
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {
+          "userGoalsA": 2,
+          "userGoalsB": 0,
+          "userResult": "ganador",
+          "correctGoalsA": 0,
+          "correctGoalsB": 0,
+          "correctResult": "empate",
+          "exactScore": false
+        }
+      },
+      {
+        "questionId": "a-south-korea-czechia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "a-czechia-south-africa",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "a-mexico-south-korea",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "a-south-africa-south-korea",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "a-czechia-mexico",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-canada-bosnia-and-herzegovina",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-qatar-switzerland",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-switzerland-bosnia-and-herzegovina",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-canada-qatar",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-switzerland-canada",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-bosnia-and-herzegovina-qatar",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-brazil-morocco",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-haiti-scotland",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-scotland-morocco",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-brazil-haiti",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-scotland-brazil",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-morocco-haiti",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-united-states-paraguay",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-australia-t-rkiye",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-united-states-australia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-t-rkiye-paraguay",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-t-rkiye-united-states",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-paraguay-australia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-germany-curacao",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-ivory-coast-ecuador",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-germany-ivory-coast",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-ecuador-curacao",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-curacao-ivory-coast",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-ecuador-germany",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-netherlands-japan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-sweden-tunisia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-netherlands-sweden",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-tunisia-japan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-japan-sweden",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-tunisia-netherlands",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-belgium-egypt",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-iran-new-zealand",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-belgium-iran",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-new-zealand-egypt",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-egypt-iran",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-new-zealand-belgium",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-spain-cape-verde",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-saudi-arabia-uruguay",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-spain-saudi-arabia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-uruguay-cape-verde",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-cape-verde-saudi-arabia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-uruguay-spain",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-france-senegal",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-iraq-norway",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-france-iraq",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-norway-senegal",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-norway-france",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-senegal-iraq",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-argentina-algeria",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-austria-jordan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-argentina-austria",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-jordan-algeria",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-algeria-austria",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-jordan-argentina",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-portugal-dr-congo",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-uzbekistan-colombia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-portugal-uzbekistan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-colombia-dr-congo",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-colombia-portugal",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-dr-congo-uzbekistan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-england-croatia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-ghana-panama",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-england-ghana",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-panama-croatia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-panama-england",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-croatia-ghana",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      }
+    ]
+  },
+  {
+    "timestamp": "2026-06-03T19:48:35.915Z",
+    "name": "Angel",
+    "email": "angel.zacarias@thebermuda.com",
+    "score": 0,
+    "answers": [
+      {
+        "questionId": "a-mexico-south-africa",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "a-south-korea-czechia",
+        "answer": {
+          "goalsA": 1,
+          "goalsB": 0
+        },
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {
+          "userGoalsA": 1,
+          "userGoalsB": 0,
+          "userResult": "ganador",
+          "correctGoalsA": 0,
+          "correctGoalsB": 0,
+          "correctResult": "empate",
+          "exactScore": false
+        }
+      },
+      {
+        "questionId": "a-czechia-south-africa",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "a-mexico-south-korea",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "a-south-africa-south-korea",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "a-czechia-mexico",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-canada-bosnia-and-herzegovina",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-qatar-switzerland",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-switzerland-bosnia-and-herzegovina",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-canada-qatar",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-switzerland-canada",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "b-bosnia-and-herzegovina-qatar",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-brazil-morocco",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-haiti-scotland",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-scotland-morocco",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-brazil-haiti",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-scotland-brazil",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "c-morocco-haiti",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-united-states-paraguay",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-australia-t-rkiye",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-united-states-australia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-t-rkiye-paraguay",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-t-rkiye-united-states",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "d-paraguay-australia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-germany-curacao",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-ivory-coast-ecuador",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-germany-ivory-coast",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-ecuador-curacao",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-curacao-ivory-coast",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "e-ecuador-germany",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-netherlands-japan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-sweden-tunisia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-netherlands-sweden",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-tunisia-japan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-japan-sweden",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "f-tunisia-netherlands",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-belgium-egypt",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-iran-new-zealand",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-belgium-iran",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-new-zealand-egypt",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-egypt-iran",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "g-new-zealand-belgium",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-spain-cape-verde",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-saudi-arabia-uruguay",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-spain-saudi-arabia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-uruguay-cape-verde",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-cape-verde-saudi-arabia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "h-uruguay-spain",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-france-senegal",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-iraq-norway",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-france-iraq",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-norway-senegal",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-norway-france",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "i-senegal-iraq",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-argentina-algeria",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-austria-jordan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-argentina-austria",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-jordan-algeria",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-algeria-austria",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "j-jordan-argentina",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-portugal-dr-congo",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-uzbekistan-colombia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-portugal-uzbekistan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-colombia-dr-congo",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-colombia-portugal",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "k-dr-congo-uzbekistan",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-england-croatia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-ghana-panama",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-england-ghana",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-panama-croatia",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-panama-england",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      },
+      {
+        "questionId": "l-croatia-ghana",
+        "correctAnswer": {
+          "goalsA": 0,
+          "goalsB": 0
+        },
+        "correct": false,
+        "points": 0,
+        "detail": {}
+      }
+    ]
+  }
+]

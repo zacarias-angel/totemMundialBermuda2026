@@ -1,0 +1,182 @@
+{
+  "groups": [
+    {
+      "name": "A",
+      "teams": ["Mexico", "South Africa", "South Korea", "Czechia"],
+      "matches": [
+        { "matchday": 1, "home": "Mexico", "away": "South Africa" },
+        { "matchday": 1, "home": "South Korea", "away": "Czechia" },
+        { "matchday": 2, "home": "Czechia", "away": "South Africa" },
+        { "matchday": 2, "home": "Mexico", "away": "South Korea" },
+        { "matchday": 3, "home": "South Africa", "away": "South Korea" },
+        { "matchday": 3, "home": "Czechia", "away": "Mexico" }
+      ]
+    },
+    {
+      "name": "B",
+      "teams": ["Canada", "Bosnia and Herzegovina", "Qatar", "Switzerland"],
+      "matches": [
+        { "matchday": 1, "home": "Canada", "away": "Bosnia and Herzegovina" },
+        { "matchday": 1, "home": "Qatar", "away": "Switzerland" },
+        { "matchday": 2, "home": "Switzerland", "away": "Bosnia and Herzegovina" },
+        { "matchday": 2, "home": "Canada", "away": "Qatar" },
+        { "matchday": 3, "home": "Switzerland", "away": "Canada" },
+        { "matchday": 3, "home": "Bosnia and Herzegovina", "away": "Qatar" }
+      ]
+    },
+    {
+      "name": "C",
+      "teams": ["Brazil", "Morocco", "Haiti", "Scotland"],
+      "matches": [
+        { "matchday": 1, "home": "Brazil", "away": "Morocco" },
+        { "matchday": 1, "home": "Haiti", "away": "Scotland" },
+        { "matchday": 2, "home": "Scotland", "away": "Morocco" },
+        { "matchday": 2, "home": "Brazil", "away": "Haiti" },
+        { "matchday": 3, "home": "Scotland", "away": "Brazil" },
+        { "matchday": 3, "home": "Morocco", "away": "Haiti" }
+      ]
+    },
+    {
+      "name": "D",
+      "teams": ["United States", "Paraguay", "Australia", "Türkiye"],
+      "matches": [
+        { "matchday": 1, "home": "United States", "away": "Paraguay" },
+        { "matchday": 1, "home": "Australia", "away": "Türkiye" },
+        { "matchday": 2, "home": "United States", "away": "Australia" },
+        { "matchday": 2, "home": "Türkiye", "away": "Paraguay" },
+        { "matchday": 3, "home": "Türkiye", "away": "United States" },
+        { "matchday": 3, "home": "Paraguay", "away": "Australia" }
+      ]
+    },
+    {
+      "name": "E",
+      "teams": ["Germany", "Curacao", "Ivory Coast", "Ecuador"],
+      "matches": [
+        { "matchday": 1, "home": "Germany", "away": "Curacao" },
+        { "matchday": 1, "home": "Ivory Coast", "away": "Ecuador" },
+        { "matchday": 2, "home": "Germany", "away": "Ivory Coast" },
+        { "matchday": 2, "home": "Ecuador", "away": "Curacao" },
+        { "matchday": 3, "home": "Curacao", "away": "Ivory Coast" },
+        { "matchday": 3, "home": "Ecuador", "away": "Germany" }
+      ]
+    },
+    {
+      "name": "F",
+      "teams": ["Netherlands", "Japan", "Sweden", "Tunisia"],
+      "matches": [
+        { "matchday": 1, "home": "Netherlands", "away": "Japan" },
+        { "matchday": 1, "home": "Sweden", "away": "Tunisia" },
+        { "matchday": 2, "home": "Netherlands", "away": "Sweden" },
+        { "matchday": 2, "home": "Tunisia", "away": "Japan" },
+        { "matchday": 3, "home": "Japan", "away": "Sweden" },
+        { "matchday": 3, "home": "Tunisia", "away": "Netherlands" }
+      ]
+    },
+    {
+      "name": "G",
+      "teams": ["Belgium", "Egypt", "Iran", "New Zealand"],
+      "matches": [
+        { "matchday": 1, "home": "Belgium", "away": "Egypt" },
+        { "matchday": 1, "home": "Iran", "away": "New Zealand" },
+        { "matchday": 2, "home": "Belgium", "away": "Iran" },
+        { "matchday": 2, "home": "New Zealand", "away": "Egypt" },
+        { "matchday": 3, "home": "Egypt", "away": "Iran" },
+        { "matchday": 3, "home": "New Zealand", "away": "Belgium" }
+      ]
+    },
+    {
+      "name": "H",
+      "teams": ["Spain", "Cape Verde", "Saudi Arabia", "Uruguay"],
+      "matches": [
+        { "matchday": 1, "home": "Spain", "away": "Cape Verde" },
+        { "matchday": 1, "home": "Saudi Arabia", "away": "Uruguay" },
+        { "matchday": 2, "home": "Spain", "away": "Saudi Arabia" },
+        { "matchday": 2, "home": "Uruguay", "away": "Cape Verde" },
+        { "matchday": 3, "home": "Cape Verde", "away": "Saudi Arabia" },
+        { "matchday": 3, "home": "Uruguay", "away": "Spain" }
+      ]
+    },
+    {
+      "name": "I",
+      "teams": ["France", "Senegal", "Iraq", "Norway"],
+      "matches": [
+        { "matchday": 1, "home": "France", "away": "Senegal" },
+        { "matchday": 1, "home": "Iraq", "away": "Norway" },
+        { "matchday": 2, "home": "France", "away": "Iraq" },
+        { "matchday": 2, "home": "Norway", "away": "Senegal" },
+        { "matchday": 3, "home": "Norway", "away": "France" },
+        { "matchday": 3, "home": "Senegal", "away": "Iraq" }
+      ]
+    },
+    {
+      "name": "J",
+      "teams": ["Argentina", "Algeria", "Austria", "Jordan"],
+      "matches": [
+        { "matchday": 1, "home": "Argentina", "away": "Algeria" },
+        { "matchday": 1, "home": "Austria", "away": "Jordan" },
+        { "matchday": 2, "home": "Argentina", "away": "Austria" },
+        { "matchday": 2, "home": "Jordan", "away": "Algeria" },
+        { "matchday": 3, "home": "Algeria", "away": "Austria" },
+        { "matchday": 3, "home": "Jordan", "away": "Argentina" }
+      ]
+    },
+    {
+      "name": "K",
+      "teams": ["Portugal", "DR Congo", "Uzbekistan", "Colombia"],
+      "matches": [
+        { "matchday": 1, "home": "Portugal", "away": "DR Congo" },
+        { "matchday": 1, "home": "Uzbekistan", "away": "Colombia" },
+        { "matchday": 2, "home": "Portugal", "away": "Uzbekistan" },
+        { "matchday": 2, "home": "Colombia", "away": "DR Congo" },
+        { "matchday": 3, "home": "Colombia", "away": "Portugal" },
+        { "matchday": 3, "home": "DR Congo", "away": "Uzbekistan" }
+      ]
+    },
+    {
+      "name": "L",
+      "teams": ["England", "Croatia", "Ghana", "Panama"],
+      "matches": [
+        { "matchday": 1, "home": "England", "away": "Croatia" },
+        { "matchday": 1, "home": "Ghana", "away": "Panama" },
+        { "matchday": 2, "home": "England", "away": "Ghana" },
+        { "matchday": 2, "home": "Panama", "away": "Croatia" },
+        { "matchday": 3, "home": "Panama", "away": "England" },
+        { "matchday": 3, "home": "Croatia", "away": "Ghana" }
+      ]
+    }
+  ],
+  "knockout": [
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 32", "home": null, "away": null },
+    { "round": "Round of 16", "home": null, "away": null },
+    { "round": "Round of 16", "home": null, "away": null },
+    { "round": "Round of 16", "home": null, "away": null },
+    { "round": "Round of 16", "home": null, "away": null },
+    { "round": "Round of 16", "home": null, "away": null },
+    { "round": "Round of 16", "home": null, "away": null },
+    { "round": "Round of 16", "home": null, "away": null },
+    { "round": "Round of 16", "home": null, "away": null },
+    { "round": "Quarter-finals", "home": null, "away": null },
+    { "round": "Quarter-finals", "home": null, "away": null },
+    { "round": "Quarter-finals", "home": null, "away": null },
+    { "round": "Quarter-finals", "home": null, "away": null },
+    { "round": "Semi-finals", "home": null, "away": null },
+    { "round": "Semi-finals", "home": null, "away": null },
+    { "round": "Third place", "home": null, "away": null },
+    { "round": "Final", "home": null, "away": null }
+  ]
+}

@@ -1,0 +1,290 @@
+{
+  "a-mexico-south-africa": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "a-south-korea-czechia": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "a-czechia-south-africa": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "a-mexico-south-korea": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "a-south-africa-south-korea": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "a-czechia-mexico": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "b-canada-bosnia-and-herzegovina": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "b-qatar-switzerland": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "b-switzerland-bosnia-and-herzegovina": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "b-canada-qatar": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "b-switzerland-canada": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "b-bosnia-and-herzegovina-qatar": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "c-brazil-morocco": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "c-haiti-scotland": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "c-scotland-morocco": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "c-brazil-haiti": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "c-scotland-brazil": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "c-morocco-haiti": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "d-united-states-paraguay": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "d-australia-t-rkiye": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "d-united-states-australia": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "d-t-rkiye-paraguay": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "d-t-rkiye-united-states": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "d-paraguay-australia": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "e-germany-curacao": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "e-ivory-coast-ecuador": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "e-germany-ivory-coast": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "e-ecuador-curacao": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "e-curacao-ivory-coast": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "e-ecuador-germany": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "f-netherlands-japan": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "f-sweden-tunisia": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "f-netherlands-sweden": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "f-tunisia-japan": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "f-japan-sweden": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "f-tunisia-netherlands": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "g-belgium-egypt": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "g-iran-new-zealand": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "g-belgium-iran": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "g-new-zealand-egypt": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "g-egypt-iran": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "g-new-zealand-belgium": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "h-spain-cape-verde": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "h-saudi-arabia-uruguay": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "h-spain-saudi-arabia": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "h-uruguay-cape-verde": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "h-cape-verde-saudi-arabia": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "h-uruguay-spain": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "i-france-senegal": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "i-iraq-norway": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "i-france-iraq": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "i-norway-senegal": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "i-norway-france": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "i-senegal-iraq": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "j-argentina-algeria": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "j-austria-jordan": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "j-argentina-austria": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "j-jordan-algeria": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "j-algeria-austria": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "j-jordan-argentina": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "k-portugal-dr-congo": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "k-uzbekistan-colombia": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "k-portugal-uzbekistan": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "k-colombia-dr-congo": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "k-colombia-portugal": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "k-dr-congo-uzbekistan": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "l-england-croatia": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "l-ghana-panama": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "l-england-ghana": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "l-panama-croatia": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "l-panama-england": {
+    "goalsA": 0,
+    "goalsB": 0
+  },
+  "l-croatia-ghana": {
+    "goalsA": 0,
+    "goalsB": 0
+  }
+}
