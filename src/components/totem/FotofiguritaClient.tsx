@@ -2,74 +2,34 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react'
 
-const FRAME = '/asset/marco.svg'
-const BANDERA = '/asset/marcobandera.svg'
-const MARCO6 = '/asset/marco6.svg'
-// const RECT_AB = '/asset/rectAB.svg'
-// const RECT_AR = '/asset/rectAR.svg'
-const NUM_2 = '/asset/2.svg'
-const NUM_6 = '/asset/6.svg'
-const ARG = '/asset/ARG.webp'
-// const PANINI = '/asset/panini.svg'
-const FIFA = '/asset/logofifa.svg'
-
-interface OverlayInfo {
-  src: string
-  layer: 'bg' | 'fg'
-  pos: { x: number; y: number; w: number; h: number } | 'full'
+function getLoggedInPlayerName(): string | null {
+  try {
+    const stored = localStorage.getItem('prode_user')
+    if (!stored) return null
+    const user = JSON.parse(stored) as { name?: string }
+    return user.name?.trim() || null
+  } catch {
+    return null
+  }
 }
-
-const OVERLAYS: OverlayInfo[] = [
-  { src: NUM_2, layer: 'bg', pos: { x: 0.7, y: 0.8, w: 0.08, h: 0.08 } },
-  { src: NUM_6, layer: 'bg', pos: { x: 0.8, y: 0.8, w: 0.08, h: 0.08 } },
-  { src: ARG, layer: 'fg', pos: { x: 0.01, y: 0.1, w: 1.0, h: 1.0 } },
-  { src: FRAME, layer: 'fg', pos: 'full' },
-  { src: BANDERA, layer: 'fg', pos: 'full' },
-  { src: MARCO6, layer: 'fg', pos: 'full' },
-  // { src: RECT_AB, layer: 'fg', pos: 'full' },
-  // { src: RECT_AR, layer: 'fg', pos: 'full' },
-  // { src: PANINI, layer: 'fg', pos: { x: 0.25, y: 0.8, w: 0.5, h: 0.06 } },
-  { src: FIFA, layer: 'fg', pos: { x: 0.72, y: 0.03, w: 0.25, h: 0.05 } },
-]
 
 export function FotofiguritaClient() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
+  const streamRef = useRef<MediaStream | null>(null)
+
   const [captured, setCaptured] = useState<string | null>(null)
   const [cameraReady, setCameraReady] = useState(false)
   const [error, setError] = useState('')
-  const [composing, setComposing] = useState(false)
-  const bgImagesRef = useRef<HTMLImageElement[]>([])
-  const fgImagesRef = useRef<HTMLImageElement[]>([])
+  const [generating, setGenerating] = useState(false)
+  const [generateError, setGenerateError] = useState('')
 
   useEffect(() => {
-    bgImagesRef.current = OVERLAYS
-      .filter((o) => o.layer === 'bg')
-      .map((o) => {
-        const img = new Image()
-        img.crossOrigin = 'anonymous'
-        img.src = o.src
-        return img
-      })
-
-    fgImagesRef.current = OVERLAYS
-      .filter((o) => o.layer === 'fg')
-      .map((o) => {
-        const img = new Image()
-        img.crossOrigin = 'anonymous'
-        img.src = o.src
-        return img
-      })
-
     startCamera()
     return () => {
-      if (streamRef.current) {
-        streamRef.current.getTracks().forEach((t) => t.stop())
-      }
+      streamRef.current?.getTracks().forEach((t) => t.stop())
     }
   }, [])
-
-  const streamRef = useRef<MediaStream | null>(null)
 
   const startCamera = async () => {
     try {
@@ -105,119 +65,98 @@ export function FotofiguritaClient() {
     setCameraReady(true)
   }
 
-  const capture = useCallback(() => {
+  const saveToGallery = (blob: Blob) => {
+    const formData = new FormData()
+    formData.append('photo', blob, 'photo.webp')
+    fetch('/api/photos', { method: 'POST', body: formData }).catch(() => {})
+  }
+
+  const capture = useCallback(async () => {
     const video = videoRef.current
     const canvas = canvasRef.current
     if (!video || !canvas) return
 
-    setComposing(true)
+    setGenerating(true)
+    setGenerateError('')
 
     const ctx = canvas.getContext('2d')
-    if (!ctx) return
+    if (!ctx) {
+      setGenerating(false)
+      return
+    }
 
     const w = 1080
     const h = 1440
     canvas.width = w
     canvas.height = h
 
-    const drawContain = (ctx: CanvasRenderingContext2D, img: HTMLImageElement, bx: number, by: number, bw: number, bh: number) => {
-      const imgAspect = img.naturalWidth / img.naturalHeight || 1
-      const boxAspect = bw / bh
-      let dw: number, dh: number
-      if (imgAspect > boxAspect) {
-        dw = bw
-        dh = bw / imgAspect
-      } else {
-        dh = bh
-        dw = bh * imgAspect
+    ctx.save()
+    ctx.scale(-1, 1)
+    const vw = video.videoWidth
+    const vh = video.videoHeight
+    const vAspect = vw / vh
+    const cAspect = w / h
+    let dw: number, dh: number, dx: number, dy: number
+    if (vAspect > cAspect) {
+      dh = h
+      dw = h * vAspect
+      dx = (w - dw) / 2
+      dy = 0
+    } else {
+      dw = w
+      dh = w / vAspect
+      dx = 0
+      dy = (h - dh) / 2
+    }
+    ctx.drawImage(video, -(dx + dw), dy, dw, dh)
+    ctx.restore()
+
+    streamRef.current?.getTracks().forEach((t) => t.stop())
+    streamRef.current = null
+
+    try {
+      const blob = await new Promise<Blob | null>((resolve) => {
+        canvas.toBlob(resolve, 'image/webp', 0.85)
+      })
+
+      if (!blob) {
+        throw new Error('No se pudo capturar la foto')
       }
-      ctx.drawImage(img, bx + (bw - dw) / 2, by + (bh - dh) / 2, dw, dh)
-    }
 
-      const drawCover = (ctx: CanvasRenderingContext2D, video: HTMLVideoElement, cw: number, ch: number) => {
-      ctx.save()
-      ctx.scale(-1, 1)
-      const vw = video.videoWidth
-      const vh = video.videoHeight
-      const vAspect = vw / vh
-      const cAspect = cw / ch
-      let dw: number, dh: number, dx: number, dy: number
-      if (vAspect > cAspect) {
-        dh = ch
-        dw = ch * vAspect
-        dx = (cw - dw) / 2
-        dy = 0
-      } else {
-        dw = cw
-        dh = cw / vAspect
-        dx = 0
-        dy = (ch - dh) / 2
+      const form = new FormData()
+      form.append('selfie', blob, 'selfie.webp')
+
+      const playerName = getLoggedInPlayerName()
+      if (playerName) {
+        form.append('playerName', playerName)
       }
-      ctx.drawImage(video, -(dx + dw), dy, dw, dh)
-      ctx.restore()
-    }
 
-    const drawOverlay = (ctx: CanvasRenderingContext2D, img: HTMLImageElement, overlay: OverlayInfo) => {
-      try {
-        if (overlay.pos === 'full') {
-          drawContain(ctx, img, 0, 0, w, h)
-        } else {
-          const bx = overlay.pos.x * w
-          const by = overlay.pos.y * h
-          const bw = overlay.pos.w * w
-          const bh = overlay.pos.h * h
-          drawContain(ctx, img, bx, by, bw, bh)
-        }
-      } catch {}
-    }
+      const res = await fetch('/api/fotofigurita/generate', { method: 'POST', body: form })
+      const data = await res.json()
 
-    const bgList = OVERLAYS.filter((o) => o.layer === 'bg')
-    const fgList = OVERLAYS.filter((o) => o.layer === 'fg')
-
-    let drawn = 0
-    const total = bgList.length + 1 + fgList.length
-
-    const finish = () => {
-      drawn++
-      if (drawn >= total) {
-        canvas.toBlob((blob) => {
-          const dataUrl = blob ? URL.createObjectURL(blob) : canvas.toDataURL('image/png')
-          setCaptured(dataUrl)
-          setComposing(false)
-          streamRef.current?.getTracks().forEach((t) => t.stop())
-          streamRef.current = null
-
-          if (blob) {
-            const formData = new FormData()
-            formData.append('photo', blob, 'photo.webp')
-            fetch('/api/photos', { method: 'POST', body: formData }).catch(() => {})
-          }
-        }, 'image/webp', 0.85)
+      if (!res.ok) {
+        throw new Error(data.error ?? 'Error al generar la figurita')
       }
+
+      const dataUrl = `data:image/webp;base64,${data.image}`
+      setCaptured(dataUrl)
+
+      const resultBlob = await fetch(dataUrl).then((r) => r.blob())
+      saveToGallery(resultBlob)
+    } catch (err) {
+      setGenerateError(err instanceof Error ? err.message : 'Error al generar la figurita')
+      startCamera()
+    } finally {
+      setGenerating(false)
     }
-
-    bgList.forEach((overlay, i) => {
-      drawOverlay(ctx, bgImagesRef.current[i], overlay)
-      finish()
-    })
-
-    drawCover(ctx, video, w, h)
-    finish()
-
-    fgList.forEach((overlay, i) => {
-      const img = fgImagesRef.current[i]
-      drawOverlay(ctx, img, overlay)
-      finish()
-    })
   }, [])
 
   const retake = () => {
     setCaptured(null)
     setError('')
-    if (streamRef.current) {
-      streamRef.current.getTracks().forEach((t) => t.stop())
-      streamRef.current = null
-    }
+    setGenerateError('')
+    streamRef.current?.getTracks().forEach((t) => t.stop())
+    streamRef.current = null
     startCamera()
   }
 
@@ -237,21 +176,7 @@ export function FotofiguritaClient() {
       const file = new File([blob], 'fotofigurita-2026.webp', { type: 'image/webp' })
       await navigator.share({ files: [file], title: 'Fotofigurita 2026' })
     } catch {
-      const a = document.createElement('a')
-      a.download = 'fotofigurita-2026.webp'
-      a.href = captured
-      a.click()
-    }
-  }
-
-  const overlayStyle = (p: OverlayInfo['pos']): React.CSSProperties => {
-    if (p === 'full') return { position: 'absolute', inset: 0 }
-    return {
-      position: 'absolute',
-      left: `${p.x * 100}%`,
-      top: `${p.y * 100}%`,
-      width: `${p.w * 100}%`,
-      height: `${p.h * 100}%`,
+      download()
     }
   }
 
@@ -279,10 +204,10 @@ export function FotofiguritaClient() {
           <h1 className="text-3xl font-bold mb-6">Tu Fotofigurita</h1>
           <img
             src={captured}
-            alt="Foto con marco"
+            alt="Fotofigurita generada"
             className="w-full max-w-sm mx-auto rounded-2xl shadow-2xl"
           />
-          <div className="flex gap-4 mt-8 justify-center">
+          <div className="flex gap-4 mt-8 justify-center flex-wrap">
             <button
               onClick={retake}
               className="px-8 py-4 rounded-xl bg-white/10 border border-white/20 text-white text-lg font-semibold hover:bg-white/20 active:scale-95 transition-all"
@@ -310,15 +235,15 @@ export function FotofiguritaClient() {
   return (
     <div className="relative min-h-screen flex flex-col items-center pt-[10vh] p-4">
       <h1 className="text-3xl font-bold mb-4">Fotofigurita</h1>
-      <p className="text-gray-400 mb-6">Poseionate frente a la cámara y tocá para sacarte la foto</p>
+      <p className="text-gray-400 mb-6 text-center max-w-sm">
+        Posicionate frente a la cámara y tocá para sacarte la foto
+      </p>
+
+      {generateError && (
+        <p className="text-red-400 mb-4 text-center max-w-sm">{generateError}</p>
+      )}
 
       <div className="relative w-full max-w-sm aspect-[3/4] rounded-2xl overflow-hidden bg-zinc-900">
-        <div className="absolute inset-0 pointer-events-none z-0">
-          {OVERLAYS.filter((o) => o.layer === 'bg').map((o) => (
-            <img key={o.src} src={o.src} alt="" style={overlayStyle(o.pos)} className="object-contain" />
-          ))}
-        </div>
-
         <video
           ref={videoRef}
           autoPlay
@@ -328,28 +253,18 @@ export function FotofiguritaClient() {
           className="absolute inset-0 w-full h-full object-cover z-10 [transform:scaleX(-1)]"
         />
 
-        <div className="absolute inset-0 pointer-events-none z-20">
-          {OVERLAYS.filter((o) => o.layer === 'fg').map((o) => (
-            <img
-              key={o.src}
-              src={o.src}
-              alt=""
-              style={overlayStyle(o.pos)}
-              className="object-contain"
-            />
-          ))}
-        </div>
-
-        {composing && (
-          <div className="absolute inset-0 flex items-center justify-center bg-black/60 z-30">
-            <p className="text-white text-lg">Componiendo...</p>
+        {generating && (
+          <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 z-30 gap-4">
+            <div className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin" />
+            <p className="text-white text-lg text-center px-4">Generando tu figurita...</p>
+            <p className="text-gray-400 text-sm text-center px-4">Puede tardar hasta un minuto</p>
           </div>
         )}
       </div>
 
       <button
         onClick={capture}
-        disabled={!cameraReady || composing}
+        disabled={!cameraReady || generating}
         className="mt-8 w-20 h-20 rounded-full border-4 border-white bg-transparent hover:bg-white/10 active:scale-90 transition-all disabled:opacity-40"
         aria-label="Sacar foto"
       >

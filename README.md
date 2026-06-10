@@ -51,7 +51,8 @@ supabase/migrations/    # SQL para crear tablas y políticas RLS
 | `/totem` | Splash con video. Al tocar → navega a `/totem/home` |
 | `/totem/home` | Ranking + QR para escanear + botón "Hacé tus pronósticos" |
 | `/totem/viernes` | Resultados de Viernes de Qué en vivo |
-| `/totem/fotofigurita` | Placeholder |
+| `/totem/fotofigurita` | Selfie + generación AI de figurita Panini (OpenAI) |
+| `/totem/galeria` | Galería de fotofiguritas generadas |
 
 ### Mobile (`/mobile`)
 
@@ -188,7 +189,23 @@ NEXT_PUBLIC_SUPABASE_URL=https://xxx.supabase.co
 NEXT_PUBLIC_SUPABASE_ANON_KEY=xxx
 SUPABASE_SERVICE_ROLE_KEY=xxx
 NEXT_PUBLIC_APP_URL=http://localhost:3000
+OPENAI_API_KEY=sk-xxx
 ```
+
+---
+
+## Fotofigurita (generación AI)
+
+El tótem captura una selfie sin máscara y la envía al servidor junto con el template de figurita (`public/asset/figurita-template.png`). La API `POST /api/fotofigurita/generate` usa OpenAI `gpt-image-2` (`images.edit`) para generar una figurita estilo Panini con la cara del usuario en estilo caricaturesco.
+
+**Requisitos:**
+- `OPENAI_API_KEY` en `.env.local` (solo servidor, nunca expuesta al cliente)
+- Verificación de organización en [OpenAI developer console](https://platform.openai.com) para modelos `gpt-image-*`
+- Timeout de API route: **120 segundos** (`maxDuration`). El hosting debe soportar requests largos (Vercel Hobby tiene ~10s; Pro permite configurar hasta 120s+)
+
+**Costo estimado:** ~USD 0.05 por figurita con `quality: medium`. Rate limit: 3 requests/min por IP.
+
+**Flujo:** cámara → selfie → OpenAI → preview → descarga/compartir → galería (Supabase Storage)
 
 ---
 
