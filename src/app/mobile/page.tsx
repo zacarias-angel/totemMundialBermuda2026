@@ -1,7 +1,8 @@
 'use client'
 
-import { useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useState, Suspense } from 'react'
+import { useRouter, useSearchParams } from 'next/navigation'
+import Link from 'next/link'
 import { Button } from '@/components/ui/Button'
 import { Input } from '@/components/ui/Input'
 import { createClient } from '@/lib/supabase/client'
@@ -14,8 +15,10 @@ async function setSessionCookie(userId: string) {
   })
 }
 
-export default function MobileLogin() {
+function LoginForm() {
   const router = useRouter()
+  const searchParams = useSearchParams()
+  const from = searchParams.get('from')
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [loading, setLoading] = useState(false)
@@ -65,7 +68,16 @@ export default function MobileLogin() {
   }
 
   return (
-    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center p-6 relative">
+      {from && (
+        <Link
+          href="/totem/home"
+          className="absolute top-6 left-6 px-5 py-3 rounded-xl bg-white/10 border border-white/20 text-white font-semibold hover:bg-white/20 active:scale-95 transition-all"
+        >
+          ← Volver
+        </Link>
+      )}
+
       <div className="w-full max-w-sm">
         <div className="text-center mb-10">
           <h1 className="text-4xl font-bold mb-2">Prode 2026</h1>
@@ -100,5 +112,13 @@ export default function MobileLogin() {
         </form>
       </div>
     </div>
+  )
+}
+
+export default function MobileLogin() {
+  return (
+    <Suspense fallback={null}>
+      <LoginForm />
+    </Suspense>
   )
 }
