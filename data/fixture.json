@@ -16,8 +16,8 @@
       "name": "B",
       "teams": ["Canada", "Bosnia and Herzegovina", "Qatar", "Switzerland"],
       "matches": [
-        { "matchday": 1, "home": "Canada", "away": "Bosnia and Herzegovina", "date": "2026-06-11", "time": "13:00" },
-        { "matchday": 1, "home": "Qatar", "away": "Switzerland", "date": "2026-06-11", "time": "19:00" },
+        { "matchday": 1, "home": "Canada", "away": "Bosnia and Herzegovina", "date": "2026-06-12", "time": "16:00" },
+        { "matchday": 1, "home": "Qatar", "away": "Switzerland", "date": "2026-06-12", "time": "22:00" },
         { "matchday": 2, "home": "Switzerland", "away": "Bosnia and Herzegovina", "date": "2026-06-16", "time": "13:00" },
         { "matchday": 2, "home": "Canada", "away": "Qatar", "date": "2026-06-16", "time": "19:00" },
         { "matchday": 3, "home": "Switzerland", "away": "Canada", "date": "2026-06-21", "time": "16:00" },

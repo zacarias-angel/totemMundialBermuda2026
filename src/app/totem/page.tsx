@@ -28,7 +28,7 @@ export default function TotemSplash() {
       )}
 
       <div
-        className="fixed inset-0 z-10 flex flex-col items-center justify-center px-6"
+        className="fixed inset-0 z-10 flex flex-col items-center pt-[5vh] px-6"
         style={{ background: videoError ? undefined : 'linear-gradient(to top, rgba(0,0,0,0.6) 0%, transparent 50%)' }}
       >
         <h1 className="text-4xl sm:text-5xl font-bold tracking-tight text-center drop-shadow-lg">

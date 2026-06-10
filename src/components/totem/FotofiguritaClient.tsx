@@ -2,32 +2,25 @@
 
 import { useRef, useState, useEffect, useCallback } from 'react'
 
-function getLoggedInPlayerName(): string | null {
-  try {
-    const stored = localStorage.getItem('prode_user')
-    if (!stored) return null
-    const user = JSON.parse(stored) as { name?: string }
-    return user.name?.trim() || null
-  } catch {
-    return null
-  }
-}
-
 export function FotofiguritaClient() {
   const videoRef = useRef<HTMLVideoElement>(null)
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const streamRef = useRef<MediaStream | null>(null)
+  const countdownTimerRef = useRef<ReturnType<typeof setInterval> | null>(null)
 
+  const [playerName, setPlayerName] = useState('')
+  const [showNameInput, setShowNameInput] = useState(true)
   const [captured, setCaptured] = useState<string | null>(null)
   const [cameraReady, setCameraReady] = useState(false)
   const [error, setError] = useState('')
   const [generating, setGenerating] = useState(false)
   const [generateError, setGenerateError] = useState('')
+  const [countdown, setCountdown] = useState<number | null>(null)
 
   useEffect(() => {
-    startCamera()
     return () => {
       streamRef.current?.getTracks().forEach((t) => t.stop())
+      if (countdownTimerRef.current) clearInterval(countdownTimerRef.current)
     }
   }, [])
 
@@ -65,13 +58,19 @@ export function FotofiguritaClient() {
     setCameraReady(true)
   }
 
+  const handleStart = () => {
+    if (!playerName.trim()) return
+    setShowNameInput(false)
+    startCamera()
+  }
+
   const saveToGallery = (blob: Blob) => {
     const formData = new FormData()
     formData.append('photo', blob, 'photo.webp')
     fetch('/api/photos', { method: 'POST', body: formData }).catch(() => {})
   }
 
-  const capture = useCallback(async () => {
+  const doCapture = useCallback(async () => {
     const video = videoRef.current
     const canvas = canvasRef.current
     if (!video || !canvas) return
@@ -125,11 +124,7 @@ export function FotofiguritaClient() {
 
       const form = new FormData()
       form.append('selfie', blob, 'selfie.webp')
-
-      const playerName = getLoggedInPlayerName()
-      if (playerName) {
-        form.append('playerName', playerName)
-      }
+      form.append('playerName', playerName.trim())
 
       const res = await fetch('/api/fotofigurita/generate', { method: 'POST', body: form })
       const data = await res.json()
@@ -149,12 +144,33 @@ export function FotofiguritaClient() {
     } finally {
       setGenerating(false)
     }
-  }, [])
+  }, [playerName])
+
+  const startCountdown = () => {
+    setCountdown(3)
+    countdownTimerRef.current = setInterval(() => {
+      setCountdown((prev) => {
+        if (prev === null || prev <= 1) {
+          if (countdownTimerRef.current) clearInterval(countdownTimerRef.current)
+          countdownTimerRef.current = null
+          doCapture()
+          return null
+        }
+        return prev - 1
+      })
+    }, 1000)
+  }
+
+  const capture = () => {
+    if (!cameraReady) return
+    startCountdown()
+  }
 
   const retake = () => {
     setCaptured(null)
     setError('')
     setGenerateError('')
+    setCountdown(null)
     streamRef.current?.getTracks().forEach((t) => t.stop())
     streamRef.current = null
     startCamera()
@@ -232,6 +248,35 @@ export function FotofiguritaClient() {
     )
   }
 
+  if (showNameInput) {
+    return (
+      <div className="relative min-h-screen flex flex-col items-center justify-center p-6">
+        <div className="w-full max-w-sm text-center">
+          <h1 className="text-3xl font-bold mb-2">Fotofigurita</h1>
+          <p className="text-gray-400 mb-8">Ingresá el nombre que va a salir en la figurita</p>
+
+          <input
+            data-totem-input
+            type="text"
+            value={playerName}
+            onChange={(e) => setPlayerName(e.target.value)}
+            placeholder="Nombre del jugador"
+            className="w-full rounded-xl border border-white/20 bg-white/10 px-4 py-4 text-white text-lg text-center placeholder:text-gray-500 outline-none focus:border-blue-500 focus:ring-1 focus:ring-blue-500 transition-all mb-6"
+            autoFocus
+          />
+
+          <button
+            onClick={handleStart}
+            disabled={!playerName.trim()}
+            className="w-full px-8 py-4 rounded-xl bg-blue-600 text-white text-lg font-semibold hover:bg-blue-700 active:scale-95 transition-all disabled:opacity-40"
+          >
+            Empezar
+          </button>
+        </div>
+      </div>
+    )
+  }
+
   return (
     <div className="relative min-h-screen flex flex-col items-center pt-[10vh] p-4">
       <h1 className="text-3xl font-bold mb-4">Fotofigurita</h1>
@@ -253,6 +298,14 @@ export function FotofiguritaClient() {
           className="absolute inset-0 w-full h-full object-cover z-10 [transform:scaleX(-1)]"
         />
 
+        {countdown !== null && (
+          <div className="absolute inset-0 flex items-center justify-center bg-black/50 z-20">
+            <span className="text-9xl font-bold text-white drop-shadow-2xl animate-ping">
+              {countdown}
+            </span>
+          </div>
+        )}
+
         {generating && (
           <div className="absolute inset-0 flex flex-col items-center justify-center bg-black/70 z-30 gap-4">
             <div className="w-12 h-12 border-4 border-white/30 border-t-white rounded-full animate-spin" />
@@ -264,7 +317,7 @@ export function FotofiguritaClient() {
 
       <button
         onClick={capture}
-        disabled={!cameraReady || generating}
+        disabled={!cameraReady || generating || countdown !== null}
         className="mt-8 w-20 h-20 rounded-full border-4 border-white bg-transparent hover:bg-white/10 active:scale-90 transition-all disabled:opacity-40"
         aria-label="Sacar foto"
       >

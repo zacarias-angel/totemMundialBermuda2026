@@ -33,8 +33,14 @@ async function seed() {
   const fixturePath = path.join(process.cwd(), 'data', 'fixture.json')
   const fixture = JSON.parse(fs.readFileSync(fixturePath, 'utf-8'))
 
+  const { count } = await supabase.from('predictions').select('*', { count: 'exact', head: true })
+  if (count && count > 0) {
+    console.log(`⚠️  Hay ${count} predicciones guardadas. Solo se actualizarán fechas/horarios sin borrar datos.`)
+    await updateExistingMatches(supabase, fixture)
+    return
+  }
+
   console.log('Clearing existing fixture data...')
-  await supabase.from('predictions').delete().gte('created_at', '2020-01-01')
   await supabase.from('matches').delete().gte('created_at', '2020-01-01')
   await supabase.from('teams').delete().gte('created_at', '2020-01-01')
   await supabase.from('groups').delete().gte('created_at', '2020-01-01')
@@ -95,6 +101,8 @@ async function seed() {
       round: match.round,
       home_team_id: null,
       away_team_id: null,
+      match_date: match.date ?? null,
+      match_time: match.time ?? null,
       status: 'scheduled',
       knockout: true,
     })
@@ -105,6 +113,72 @@ async function seed() {
 
   console.log(`✓ ${fixture.knockout.length} knockout matches created`)
   console.log('Seed complete!')
+}
+
+async function updateExistingMatches(supabase: any, fixture: any) {
+  for (const group of fixture.groups) {
+    const { data: groupData } = await supabase.from('groups').select('id').eq('name', group.name).single()
+    if (!groupData) {
+      console.error(`Group ${group.name} not found`)
+      continue
+    }
+
+    const { data: dbMatches } = await supabase
+      .from('matches')
+      .select('id, matchday')
+      .eq('group_id', groupData.id)
+      .eq('knockout', false)
+      .order('matchday', { ascending: true })
+
+    const typedMatches = (dbMatches ?? []) as { id: string; matchday: number | null }[]
+    if (typedMatches.length === 0) {
+      console.error(`No matches found for group ${group.name}`)
+      continue
+    }
+
+    for (let i = 0; i < Math.min(group.matches.length, typedMatches.length); i++) {
+      const fixtureMatch = group.matches[i]
+      const dbMatch = typedMatches[i]
+      const { error } = await supabase
+        .from('matches')
+        .update({
+          match_date: fixtureMatch.date ?? null,
+          match_time: fixtureMatch.time ?? null,
+        })
+        .eq('id', dbMatch.id)
+
+      if (error) console.error(`Error updating match in group ${group.name}:`, error)
+    }
+
+    console.log(`✓ Group ${group.name}: dates updated`)
+  }
+
+  // Update knockout matches
+  const { data: knockMatches } = await supabase
+    .from('matches')
+    .select('id, round')
+    .eq('knockout', true)
+    .order('id', { ascending: true })
+
+  const typedKnock = (knockMatches ?? []) as { id: string; round: string }[]
+  if (typedKnock.length > 0) {
+    for (let i = 0; i < Math.min(fixture.knockout.length, typedKnock.length); i++) {
+      const fm = fixture.knockout[i]
+      const km = typedKnock[i]
+      const { error } = await supabase
+        .from('matches')
+        .update({
+          match_date: fm.date ?? null,
+          match_time: fm.time ?? null,
+        })
+        .eq('id', km.id)
+
+      if (error) console.error(`Error updating knockout match:`, error)
+    }
+  }
+
+  console.log(`✓ ${fixture.knockout.length} knockout dates updated`)
+  console.log('Seed complete! (predictions preserved)')
 }
 
 seed().catch(console.error)
