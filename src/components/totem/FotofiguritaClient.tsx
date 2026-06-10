@@ -1,6 +1,7 @@
 'use client'
 
 import { useRef, useState, useEffect, useCallback } from 'react'
+import { QRCode } from '@/components/ui/QRCode'
 
 export function FotofiguritaClient() {
   const videoRef = useRef<HTMLVideoElement>(null)
@@ -16,6 +17,7 @@ export function FotofiguritaClient() {
   const [generating, setGenerating] = useState(false)
   const [generateError, setGenerateError] = useState('')
   const [countdown, setCountdown] = useState<number | null>(null)
+  const [photoUrl, setPhotoUrl] = useState<string | null>(null)
 
   useEffect(() => {
     return () => {
@@ -64,10 +66,16 @@ export function FotofiguritaClient() {
     startCamera()
   }
 
-  const saveToGallery = (blob: Blob) => {
-    const formData = new FormData()
-    formData.append('photo', blob, 'photo.webp')
-    fetch('/api/photos', { method: 'POST', body: formData }).catch(() => {})
+  const saveToGallery = async (blob: Blob): Promise<string | null> => {
+    try {
+      const formData = new FormData()
+      formData.append('photo', blob, 'photo.webp')
+      const res = await fetch('/api/photos', { method: 'POST', body: formData })
+      const data = await res.json()
+      return data.url ?? null
+    } catch {
+      return null
+    }
   }
 
   const doCapture = useCallback(async () => {
@@ -137,7 +145,8 @@ export function FotofiguritaClient() {
       setCaptured(dataUrl)
 
       const resultBlob = await fetch(dataUrl).then((r) => r.blob())
-      saveToGallery(resultBlob)
+      const savedUrl = await saveToGallery(resultBlob)
+      if (savedUrl) setPhotoUrl(savedUrl)
     } catch (err) {
       setGenerateError(err instanceof Error ? err.message : 'Error al generar la figurita')
       startCamera()
@@ -168,6 +177,7 @@ export function FotofiguritaClient() {
 
   const retake = () => {
     setCaptured(null)
+    setPhotoUrl(null)
     setError('')
     setGenerateError('')
     setCountdown(null)
@@ -218,6 +228,7 @@ export function FotofiguritaClient() {
       <div className="relative min-h-screen flex flex-col items-center pt-[10vh] p-8">
         <div className="text-center max-w-lg">
           <h1 className="text-3xl font-bold mb-6">Tu Fotofigurita</h1>
+          {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={captured}
             alt="Fotofigurita generada"
@@ -243,6 +254,15 @@ export function FotofiguritaClient() {
               Compartir
             </button>
           </div>
+
+          {photoUrl && (
+            <div className="mt-8 flex flex-col items-center gap-3">
+              <p className="text-sm text-gray-500 text-center">Escaneá para descargar en tu celu</p>
+              <div className="bg-white/5 backdrop-blur-md rounded-2xl p-4 border border-white/10 inline-block">
+                <QRCode url={photoUrl} size={160} />
+              </div>
+            </div>
+          )}
         </div>
       </div>
     )

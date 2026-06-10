@@ -1,6 +1,7 @@
 'use client'
 
 import { useState, useEffect, useCallback } from 'react'
+import Image from 'next/image'
 import Link from 'next/link'
 
 interface Photo {
@@ -75,10 +76,13 @@ export default function GaleriaPage() {
                 onClick={() => setSelected(photo)}
                 className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-blue-500/50 transition-all"
               >
-                <img
+                <Image
                   src={photo.url}
                   alt=""
+                  width={300}
+                  height={400}
                   className="w-full h-full object-cover"
+                  unoptimized
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
                 <p className="absolute bottom-2 left-2 text-xs text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">
@@ -105,10 +109,13 @@ export default function GaleriaPage() {
             >
               ✕
             </button>
-            <img
+            <Image
               src={selected.url}
               alt="Foto"
+              width={600}
+              height={800}
               className="w-full rounded-2xl shadow-2xl"
+              unoptimized
             />
             <div className="flex items-center justify-between mt-4">
               <p className="text-gray-400 text-sm">{formatDate(selected.createdAt)}</p>
