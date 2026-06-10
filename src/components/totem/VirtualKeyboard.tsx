@@ -16,6 +16,15 @@ const numberKeys = [
   ['ABC', ',', ' ', '.', 'Enter'],
 ]
 
+function setNativeValue(el: HTMLInputElement | HTMLTextAreaElement, value: string) {
+  const nativeSetter = Object.getOwnPropertyDescriptor(
+    (el instanceof HTMLInputElement ? HTMLInputElement : HTMLTextAreaElement).prototype,
+    'value'
+  )?.set
+  nativeSetter?.call(el, value)
+  el.dispatchEvent(new Event('input', { bubbles: true }))
+}
+
 export function VirtualKeyboard() {
   const inputRef = useRef<HTMLInputElement | HTMLTextAreaElement | null>(null)
   const [isShift, setIsShift] = useState(false)
@@ -33,13 +42,11 @@ export function VirtualKeyboard() {
         }
       }
     }
-    const onBlur = (e: FocusEvent) => {
-      const related = e.relatedTarget as HTMLElement | null
-      if (related && related.closest('[data-totem-keyboard]')) return
+    const onBlur = () => {
       setTimeout(() => {
         inputRef.current = null
         setFocused(false)
-      }, 150)
+      }, 200)
     }
 
     document.addEventListener('focusin', onFocus)
@@ -56,9 +63,8 @@ export function VirtualKeyboard() {
     const start = el.selectionStart ?? el.value.length
     const end = el.selectionEnd ?? start
     const newValue = el.value.slice(0, start) + char + el.value.slice(end)
-    el.value = newValue
+    setNativeValue(el, newValue)
     el.setSelectionRange(start + 1, start + 1)
-    el.dispatchEvent(new Event('input', { bubbles: true }))
     el.focus()
   }, [])
 
@@ -68,9 +74,8 @@ export function VirtualKeyboard() {
     const start = el.selectionStart ?? el.value.length
     if (start === 0) return
     const newValue = el.value.slice(0, start - 1) + el.value.slice(start)
-    el.value = newValue
+    setNativeValue(el, newValue)
     el.setSelectionRange(start - 1, start - 1)
-    el.dispatchEvent(new Event('input', { bubbles: true }))
     el.focus()
   }, [])
 
@@ -79,10 +84,14 @@ export function VirtualKeyboard() {
     if (!el) return
 
     switch (key) {
-      case 'Enter':
-        el.dispatchEvent(new KeyboardEvent('keydown', { key: 'Enter', bubbles: true }))
-        el.form?.requestSubmit()
+      case 'Enter': {
+        const form = el.form
+        if (form) {
+          const submitBtn = form.querySelector('button[type="submit"]') as HTMLButtonElement | null
+          if (submitBtn) submitBtn.click()
+        }
         break
+      }
       case 'Backspace':
         deleteChar()
         break
@@ -115,6 +124,7 @@ export function VirtualKeyboard() {
   return (
     <div
       data-totem-keyboard
+      onPointerDown={(e) => e.preventDefault()}
       className="fixed top-[5vh] left-0 right-0 z-50 bg-zinc-900/95 backdrop-blur-md border-b border-white/10 px-3 py-3 select-none shadow-2xl"
     >
       <div className="flex items-center justify-between mb-2 px-1">
@@ -122,7 +132,7 @@ export function VirtualKeyboard() {
           {inputRef.current?.placeholder || 'Teclado virtual'}
         </span>
         <button
-          onClick={closeKeyboard}
+          onPointerDown={(e) => { e.preventDefault(); closeKeyboard() }}
           className="w-10 h-10 flex items-center justify-center rounded-xl bg-zinc-700 hover:bg-zinc-600 text-white text-lg font-bold active:scale-90 transition-transform"
           aria-label="Cerrar teclado"
         >
