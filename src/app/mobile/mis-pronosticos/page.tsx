@@ -1,6 +1,7 @@
 import { redirect } from 'next/navigation'
 import { createServerSupabaseClient } from '@/lib/supabase/server'
 import { getCurrentUser } from '@/lib/supabase/users'
+import { Flag } from '@/components/ui/Flag'
 
 export default async function MisPronosticosPage() {
   const user = await getCurrentUser()
@@ -82,11 +83,17 @@ export default async function MisPronosticosPage() {
                   className="rounded-2xl bg-white/10 border border-white/20 p-4"
                 >
                   <div className="flex justify-between items-center mb-2">
-                    <span className="font-semibold">{p.match.home_team?.name}</span>
+                    <div className="flex items-center gap-1.5">
+                      <Flag name={p.match.home_team?.name} className="text-base" />
+                      <span className="font-semibold">{p.match.home_team?.name}</span>
+                    </div>
                     <span className="text-xl font-bold tabular-nums">
                       {p.home_score} - {p.away_score}
                     </span>
-                    <span className="font-semibold">{p.match.away_team?.name}</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="font-semibold">{p.match.away_team?.name}</span>
+                      <Flag name={p.match.away_team?.name} className="text-base" />
+                    </div>
                   </div>
                   {p.match.status === 'finished' && (
                     <div className="flex justify-between items-center text-sm">

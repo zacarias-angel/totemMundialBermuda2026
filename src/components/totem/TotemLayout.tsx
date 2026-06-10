@@ -8,6 +8,7 @@ import { VirtualKeyboard } from './VirtualKeyboard'
 const navItems = [
   { href: '/totem', label: 'Inicio' },
   { href: '/totem/home', label: 'Ranking' },
+  { href: '/totem/proximos', label: 'Próximos Partidos' },
   { href: '/totem/viernes', label: 'Viernes de Qué' },
   { href: '/totem/fotofigurita', label: 'Fotofigurita' },
   { href: '/totem/galeria', label: 'Galería' },

@@ -1,0 +1,10 @@
+{
+  "note": "Template del Mundial 2026 con campos date y time agregados. Completar con el calendario oficial.",
+  "match_schema": {
+    "matchday": 1,
+    "home": "Team A",
+    "away": "Team B",
+    "date": "YYYY-MM-DD",
+    "time": "HH:MM"
+  }
+}

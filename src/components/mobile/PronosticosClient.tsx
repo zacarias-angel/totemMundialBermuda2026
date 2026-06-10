@@ -23,15 +23,68 @@ interface Match {
   home_score: number | null
   away_score: number | null
   matchday: number | null
+  match_date: string | null
+  match_time: string | null
   status: string
   knockout: boolean
   home_team: Team | null
   away_team: Team | null
 }
 
+type Tab = 'proximos' | 'knockout' | string
+
+function ProximosList({ matches, userId, predictions }: {
+  matches: Match[]
+  userId: string
+  predictions: Map<string, { home_score: number; away_score: number }>
+}) {
+  const today = new Date().toISOString().split('T')[0]
+  const tomorrow = new Date()
+  tomorrow.setDate(tomorrow.getDate() + 1)
+  const tomorrowStr = tomorrow.toISOString().split('T')[0]
+
+  const hoy = matches.filter((m) => m.match_date === today)
+  const manana = matches.filter((m) => m.match_date === tomorrowStr)
+
+  return (
+    <div className="flex flex-col gap-6">
+      {hoy.length > 0 && (
+        <div>
+          <h2 className="text-lg font-bold mb-3 text-yellow-400">Hoy</h2>
+          <div className="flex flex-col gap-3">
+            {hoy.map((match) => (
+              <MatchPredictor
+                key={match.id}
+                match={match}
+                userId={userId}
+                initialPrediction={predictions.get(match.id) ?? null}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+      {manana.length > 0 && (
+        <div>
+          <h2 className="text-lg font-bold mb-3">Mañana</h2>
+          <div className="flex flex-col gap-3">
+            {manana.map((match) => (
+              <MatchPredictor
+                key={match.id}
+                match={match}
+                userId={userId}
+                initialPrediction={predictions.get(match.id) ?? null}
+              />
+            ))}
+          </div>
+        </div>
+      )}
+    </div>
+  )
+}
+
 export function PronosticosClient({ userId }: { userId: string }) {
   const [groups, setGroups] = useState<Group[]>([])
-  const [selectedGroup, setSelectedGroup] = useState<string | 'knockout'>('A')
+  const [selectedTab, setSelectedTab] = useState<Tab>('proximos')
   const [matches, setMatches] = useState<Match[]>([])
   const [predictions, setPredictions] = useState<Map<string, { home_score: number; away_score: number }>>(new Map())
   const [loading, setLoading] = useState(true)
@@ -81,10 +134,27 @@ export function PronosticosClient({ userId }: { userId: string }) {
     load()
   }, [userId])
 
-  const filteredMatches = matches.filter((m) => {
-    if (selectedGroup === 'knockout') return m.knockout
-    return !m.knockout && m.group_id === selectedGroup
-  })
+  const filteredMatches = (() => {
+    if (selectedTab === 'proximos') {
+      const today = new Date().toISOString().split('T')[0]
+      const now = new Date().toTimeString().slice(0, 5)
+      return matches
+        .filter((m) => {
+          if (m.status !== 'scheduled' || !m.match_date) return false
+          return m.match_date > today || (m.match_date === today && (m.match_time ?? '00:00') >= now)
+        })
+        .sort((a, b) => {
+          const da = a.match_date ?? ''
+          const db = b.match_date ?? ''
+          if (da !== db) return da < db ? -1 : 1
+          const ta = a.match_time ?? '00:00'
+          const tb = b.match_time ?? '00:00'
+          return ta < tb ? -1 : 1
+        })
+    }
+    if (selectedTab === 'knockout') return matches.filter((m) => m.knockout)
+    return matches.filter((m) => !m.knockout && m.group_id === selectedTab)
+  })()
 
   if (loading) {
     return <p className="text-gray-400 text-center py-12">Cargando partidos...</p>
@@ -96,14 +166,24 @@ export function PronosticosClient({ userId }: { userId: string }) {
       <p className="text-gray-400 text-sm mb-4">Elegí un grupo y pronosticá los resultados</p>
 
       <div className="flex flex-wrap gap-2 mb-6">
+        <button
+          onClick={() => setSelectedTab('proximos')}
+          className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all active:scale-95 ${
+            selectedTab === 'proximos'
+              ? 'bg-green-600 text-white'
+              : 'bg-white/10 text-gray-300 hover:bg-white/20'
+          }`}
+        >
+          Próximos
+        </button>
         {groups
           .sort((a, b) => a.name.localeCompare(b.name))
           .map((g) => (
             <button
               key={g.id}
-              onClick={() => setSelectedGroup(g.id)}
+              onClick={() => setSelectedTab(g.id)}
               className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all active:scale-95 ${
-                selectedGroup === g.id
+                selectedTab === g.id
                   ? 'bg-blue-600 text-white'
                   : 'bg-white/10 text-gray-300 hover:bg-white/20'
               }`}
@@ -112,9 +192,9 @@ export function PronosticosClient({ userId }: { userId: string }) {
             </button>
           ))}
         <button
-          onClick={() => setSelectedGroup('knockout')}
+          onClick={() => setSelectedTab('knockout')}
           className={`px-4 py-2 rounded-xl text-sm font-semibold transition-all active:scale-95 ${
-            selectedGroup === 'knockout'
+            selectedTab === 'knockout'
               ? 'bg-amber-600 text-white'
               : 'bg-white/10 text-gray-300 hover:bg-white/20'
           }`}
@@ -125,10 +205,14 @@ export function PronosticosClient({ userId }: { userId: string }) {
 
       {filteredMatches.length === 0 ? (
         <p className="text-gray-500 text-center py-8">
-          {selectedGroup === 'knockout'
-            ? 'No hay eliminatorias disponibles todavía'
-            : 'No hay partidos en este grupo'}
+          {selectedTab === 'proximos'
+            ? 'No hay próximos partidos'
+            : selectedTab === 'knockout'
+              ? 'No hay eliminatorias disponibles todavía'
+              : 'No hay partidos en este grupo'}
         </p>
+      ) : selectedTab === 'proximos' ? (
+        <ProximosList matches={filteredMatches} userId={userId} predictions={predictions} />
       ) : (
         <div className="flex flex-col gap-3">
           {filteredMatches.map((match) => (

@@ -22,6 +22,8 @@ export type Match = {
   home_score?: number | null
   away_score?: number | null
   matchday?: number | null
+  match_date?: string | null
+  match_time?: string | null
   status: MatchStatus
   knockout: boolean
   created_at?: string

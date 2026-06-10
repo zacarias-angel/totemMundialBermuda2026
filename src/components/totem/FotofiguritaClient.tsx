@@ -180,16 +180,19 @@ export function FotofiguritaClient() {
     const finish = () => {
       drawn++
       if (drawn >= total) {
-        const dataUrl = canvas.toDataURL('image/png')
-        setCaptured(dataUrl)
-        fetch('/api/photos', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ data: dataUrl }),
-        })
-        setComposing(false)
-        streamRef.current?.getTracks().forEach((t) => t.stop())
-        streamRef.current = null
+        canvas.toBlob((blob) => {
+          const dataUrl = blob ? URL.createObjectURL(blob) : canvas.toDataURL('image/png')
+          setCaptured(dataUrl)
+          setComposing(false)
+          streamRef.current?.getTracks().forEach((t) => t.stop())
+          streamRef.current = null
+
+          if (blob) {
+            const formData = new FormData()
+            formData.append('photo', blob, 'photo.webp')
+            fetch('/api/photos', { method: 'POST', body: formData }).catch(() => {})
+          }
+        }, 'image/webp', 0.85)
       }
     }
 
@@ -221,7 +224,7 @@ export function FotofiguritaClient() {
   const download = () => {
     if (!captured) return
     const a = document.createElement('a')
-    a.download = 'fotofigurita-2026.png'
+    a.download = 'fotofigurita-2026.webp'
     a.href = captured
     a.click()
   }
@@ -231,11 +234,11 @@ export function FotofiguritaClient() {
     try {
       const res = await fetch(captured)
       const blob = await res.blob()
-      const file = new File([blob], 'fotofigurita-2026.png', { type: 'image/png' })
+      const file = new File([blob], 'fotofigurita-2026.webp', { type: 'image/webp' })
       await navigator.share({ files: [file], title: 'Fotofigurita 2026' })
     } catch {
       const a = document.createElement('a')
-      a.download = 'fotofigurita-2026.png'
+      a.download = 'fotofigurita-2026.webp'
       a.href = captured
       a.click()
     }

@@ -1,3 +1,5 @@
+import { Flag } from '@/components/ui/Flag'
+
 interface MatchCardProps {
   homeTeam: string
   awayTeam: string
@@ -30,7 +32,10 @@ export function MatchCard({
       )}
 
       <div className="flex items-center justify-between gap-4">
-        <span className="flex-1 text-right text-lg font-semibold truncate">{homeTeam}</span>
+        <div className="flex-1 text-right flex items-center justify-end gap-2">
+          <span className="text-lg font-semibold truncate">{homeTeam}</span>
+          <Flag name={homeTeam} className="text-xl shrink-0" />
+        </div>
 
         <div className="flex items-center gap-2 shrink-0">
           {isFinished && homeScore != null ? (
@@ -42,7 +47,10 @@ export function MatchCard({
           )}
         </div>
 
-        <span className="flex-1 text-left text-lg font-semibold truncate">{awayTeam}</span>
+        <div className="flex-1 text-left flex items-center gap-2">
+          <Flag name={awayTeam} className="text-xl shrink-0" />
+          <span className="text-lg font-semibold truncate">{awayTeam}</span>
+        </div>
       </div>
 
       <div className="flex items-center justify-between">

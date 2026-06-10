@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { createClient } from '@/lib/supabase/client'
 import { recalculatePointsForMatch } from '@/services/predictions'
+import { Flag } from '@/components/ui/Flag'
 
 interface ResultFormProps {
   match: {
@@ -44,7 +45,10 @@ export function ResultForm({ match }: ResultFormProps) {
       <div className="text-xs text-gray-500 uppercase tracking-wider mb-2">{match.round}</div>
 
       <div className="flex items-center justify-between gap-3 mb-3">
-        <span className="font-semibold flex-1 truncate">{match.home_team?.name}</span>
+        <div className="flex items-center gap-1.5 flex-1 truncate">
+          <Flag name={match.home_team?.name} className="text-base shrink-0" />
+          <span className="font-semibold truncate">{match.home_team?.name}</span>
+        </div>
 
         <div className="flex items-center gap-2">
           <select
@@ -72,7 +76,10 @@ export function ResultForm({ match }: ResultFormProps) {
           </select>
         </div>
 
-        <span className="font-semibold flex-1 truncate text-right">{match.away_team?.name}</span>
+        <div className="flex items-center gap-1.5 flex-1 truncate justify-end">
+          <span className="font-semibold truncate">{match.away_team?.name}</span>
+          <Flag name={match.away_team?.name} className="text-base shrink-0" />
+        </div>
       </div>
 
       <div className="flex items-center gap-3">

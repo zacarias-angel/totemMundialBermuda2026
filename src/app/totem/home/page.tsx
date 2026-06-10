@@ -5,9 +5,22 @@ import { InactivityGuard } from '@/components/totem/InactivityGuard'
 import { RankingTable } from '@/components/totem/RankingTable'
 import { RankingAutoRefresh } from '@/components/totem/RankingAutoRefresh'
 import { QRCode } from '@/components/ui/QRCode'
+import { HoyManana } from '@/components/totem/HoyManana'
+import { getMatchesByDate } from '@/services/fixture'
 
-export default function TotemHome() {
+export default async function TotemHome() {
   const url = process.env.NEXT_PUBLIC_APP_URL ?? 'http://192.168.0.127:3000/mobile'
+
+  const today = new Date()
+  const todayStr = today.toISOString().split('T')[0]
+  const tomorrow = new Date(today)
+  tomorrow.setDate(tomorrow.getDate() + 1)
+  const tomorrowStr = tomorrow.toISOString().split('T')[0]
+
+  const [hoy, manana] = await Promise.all([
+    getMatchesByDate(todayStr),
+    getMatchesByDate(tomorrowStr),
+  ])
 
   return (
     <InactivityGuard>
@@ -36,6 +49,10 @@ export default function TotemHome() {
               <QRCode url={url} size={180} />
             </div>
           </div>
+
+          <Suspense fallback={null}>
+            <HoyManana hoy={hoy} manana={manana} />
+          </Suspense>
         </div>
       </div>
     </div>

@@ -116,7 +116,7 @@ export default function GaleriaPage() {
                 <button
                   onClick={() => {
                     const a = document.createElement('a')
-                    a.download = `fotofigurita-${selected.id.slice(0, 8)}.png`
+                    a.download = `fotofigurita-${selected.id.slice(0, 8)}.webp`
                     a.href = selected.url
                     a.click()
                   }}

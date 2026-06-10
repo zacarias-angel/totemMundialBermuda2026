@@ -2,6 +2,7 @@
 
 import { useState } from 'react'
 import { createPortal } from 'react-dom'
+import { Flag } from '@/components/ui/Flag'
 
 type RankingEntry = {
   name: string
@@ -103,11 +104,17 @@ export function RankingTableClient({ ranking }: { ranking: RankingEntry[] }) {
                       className="rounded-xl bg-white/5 border border-white/10 p-4"
                     >
                       <div className="flex justify-between items-center mb-2">
-                        <span className="font-semibold text-sm">{p.home_team}</span>
+                        <div className="flex items-center gap-1.5">
+                          <Flag name={p.home_team} className="text-base" />
+                          <span className="font-semibold text-sm">{p.home_team}</span>
+                        </div>
                         <span className="text-lg font-bold tabular-nums">
                           {p.home_score} - {p.away_score}
                         </span>
-                        <span className="font-semibold text-sm">{p.away_team}</span>
+                        <div className="flex items-center gap-1.5">
+                          <span className="font-semibold text-sm">{p.away_team}</span>
+                          <Flag name={p.away_team} className="text-base" />
+                        </div>
                       </div>
                       {p.status === 'finished' && (
                         <div className="flex justify-between items-center text-xs text-gray-400">

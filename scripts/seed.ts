@@ -34,6 +34,7 @@ async function seed() {
   const fixture = JSON.parse(fs.readFileSync(fixturePath, 'utf-8'))
 
   console.log('Clearing existing fixture data...')
+  await supabase.from('predictions').delete().gte('created_at', '2020-01-01')
   await supabase.from('matches').delete().gte('created_at', '2020-01-01')
   await supabase.from('teams').delete().gte('created_at', '2020-01-01')
   await supabase.from('groups').delete().gte('created_at', '2020-01-01')
@@ -68,12 +69,14 @@ async function seed() {
 
     const teamMap = new Map(teamsData.map((t) => [t.name, t.id]))
 
-    const matchInserts = group.matches.map((m: { matchday: number; home: string; away: string }) => ({
+    const matchInserts = group.matches.map((m: { matchday: number; home: string; away: string; date?: string; time?: string }) => ({
       round: `Group ${group.name}`,
       group_id: groupData.id,
       home_team_id: teamMap.get(m.home),
       away_team_id: teamMap.get(m.away),
       matchday: m.matchday,
+      match_date: m.date ?? null,
+      match_time: m.time ?? null,
       status: 'scheduled',
       knockout: false,
     }))
