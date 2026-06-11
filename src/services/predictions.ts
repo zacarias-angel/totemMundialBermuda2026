@@ -9,6 +9,16 @@ export async function submitPrediction(
 ) {
   const supabase = createClient()
 
+  const { data: match } = await supabase
+    .from('matches')
+    .select('status')
+    .eq('id', matchId)
+    .single()
+
+  if (!match || match.status !== 'scheduled') {
+    throw new Error('No se puede pronosticar un partido que ya comenzó o finalizó')
+  }
+
   const { data: existing } = await supabase
     .from('predictions')
     .select('id')

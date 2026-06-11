@@ -53,6 +53,30 @@ export function MatchPredictor({ match, userId, initialPrediction }: MatchPredic
     )
   }
 
+  if (match.status === 'live') {
+    return (
+      <div className="rounded-2xl bg-white/10 border border-green-500/40 p-4">
+        <div className="flex items-center justify-between gap-3 mb-2">
+          <div className="flex items-center justify-end gap-1.5 flex-1 truncate">
+            <span className="font-semibold text-lg truncate">{match.home_team?.name}</span>
+            <Flag name={match.home_team?.name} className="text-xl shrink-0" />
+          </div>
+          <span className="text-green-400 text-sm font-bold animate-pulse">EN VIVO</span>
+          <div className="flex items-center gap-1.5 flex-1 truncate">
+            <Flag name={match.away_team?.name} className="text-xl shrink-0" />
+            <span className="font-semibold text-lg truncate">{match.away_team?.name}</span>
+          </div>
+        </div>
+        {initialPrediction && (
+          <p className="text-xs text-gray-400 text-center">
+            Tu pronóstico: {initialPrediction.home_score} - {initialPrediction.away_score}
+          </p>
+        )}
+        <p className="text-xs text-yellow-400 text-center mt-2">Partido en vivo — No se permiten pronósticos</p>
+      </div>
+    )
+  }
+
   const isKnockoutAvailable = match.knockout
     ? match.home_team_id != null && match.away_team_id != null
     : true
