@@ -5,9 +5,11 @@ export async function ViernesDisplay() {
 
   if (!question) {
     return (
-      <div className="text-center py-12">
-        <p className="text-2xl font-bold mb-2">Viernes de Qué</p>
-        <p className="text-gray-400">No hay pregunta activa esta semana</p>
+      <div className="animate-fade py-16 text-center">
+        <p className="mb-1 text-[11px] font-medium uppercase tracking-[0.18em] text-white/40">
+          Viernes de Qué
+        </p>
+        <p className="text-xl font-semibold text-white/70">No hay pregunta activa esta semana</p>
       </div>
     )
   }
@@ -21,30 +23,45 @@ export async function ViernesDisplay() {
   const total = answers.length
 
   return (
-    <div className="w-full max-w-xl mx-auto">
-      <p className="text-sm text-gray-400 uppercase tracking-wider mb-1">Viernes de Qué</p>
-      <h2 className="text-2xl font-bold mb-8">{question.question}</h2>
+    <div className="mx-auto w-full max-w-xl animate-rise">
+      <p className="mb-2 text-[11px] font-medium uppercase tracking-[0.18em] text-[var(--accent)]">
+        Viernes de Qué
+      </p>
+      <h2 className="mb-8 text-3xl font-bold leading-tight tracking-tight">{question.question}</h2>
 
       {total === 0 ? (
-        <p className="text-gray-500 text-center">Todavía no hay respuestas</p>
+        <p className="py-10 text-center text-white/40">Todavía no hay respuestas</p>
       ) : (
         <div className="flex flex-col gap-3">
-          {sorted.map(([answer, count]) => (
-            <div key={answer} className="rounded-xl bg-white/10 border border-white/20 p-4">
-              <div className="flex justify-between items-center mb-2">
-                <span className="font-semibold text-lg capitalize">{answer}</span>
-                <span className="text-sm text-gray-400 tabular-nums">
-                  {count} voto{count !== 1 ? 's' : ''}
-                </span>
+          {sorted.map(([answer, count], i) => {
+            const pct = (count / total) * 100
+            const leading = i === 0
+            return (
+              <div
+                key={answer}
+                className={`rounded-2xl border p-4 transition-colors ${
+                  leading
+                    ? 'border-[var(--accent)]/30 bg-[var(--accent-soft)]'
+                    : 'border-white/[0.07] bg-white/[0.03]'
+                }`}
+              >
+                <div className="mb-2.5 flex items-center justify-between">
+                  <span className="text-lg font-semibold capitalize">{answer}</span>
+                  <span className="text-sm tabular-nums text-white/45">
+                    {count} voto{count !== 1 ? 's' : ''} · {Math.round(pct)}%
+                  </span>
+                </div>
+                <div className="h-2 overflow-hidden rounded-full bg-white/[0.06]">
+                  <div
+                    className={`h-full rounded-full transition-all duration-700 ${
+                      leading ? 'bg-[var(--accent)]' : 'bg-white/35'
+                    }`}
+                    style={{ width: `${pct}%` }}
+                  />
+                </div>
               </div>
-              <div className="h-2 rounded-full bg-white/5 overflow-hidden">
-                <div
-                  className="h-full rounded-full bg-blue-500 transition-all"
-                  style={{ width: `${(count / total) * 100}%` }}
-                />
-              </div>
-            </div>
-          ))}
+            )
+          })}
         </div>
       )}
     </div>

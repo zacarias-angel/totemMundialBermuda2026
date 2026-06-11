@@ -6,6 +6,7 @@ import { RankingTable } from '@/components/totem/RankingTable'
 import { RankingAutoRefresh } from '@/components/totem/RankingAutoRefresh'
 import { QRCode } from '@/components/ui/QRCode'
 import { HoyManana } from '@/components/totem/HoyManana'
+import { RankingSkeleton, MatchesSkeleton } from '@/components/totem/Skeletons'
 import { getMatchesByDate } from '@/services/fixture'
 
 export default async function TotemHome() {
@@ -24,38 +25,53 @@ export default async function TotemHome() {
 
   return (
     <InactivityGuard>
-      <div className="relative min-h-screen p-4 sm:p-8 pt-20">
-      <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">Ranking</h1>
+      <div className="mx-auto w-full max-w-3xl px-5 pb-16 pt-20 sm:px-8">
+        <header className="animate-rise mb-7">
+          <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1">
+            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/55">En vivo</span>
+          </div>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Ranking</h1>
+        </header>
 
-      <RankingAutoRefresh />
-      <div className="flex gap-6 max-w-6xl mx-auto">
-        <div className="w-[70%]">
-          <Suspense fallback={<p className="text-gray-400">Cargando ranking...</p>}>
+        <RankingAutoRefresh />
+
+        {/* Join card */}
+        <section
+          className="animate-rise mb-7 flex flex-col items-center gap-5 rounded-3xl border border-white/[0.08] bg-white/[0.03] p-5 sm:flex-row"
+          style={{ animationDelay: '60ms' }}
+        >
+          <div className="flex-1 text-center sm:text-left">
+            <h2 className="text-xl font-semibold tracking-tight">¿Querés jugar?</h2>
+            <p className="mt-1 text-sm text-white/55">
+              Escaneá el código o tocá el botón para hacer tus pronósticos.
+            </p>
+            <Link
+              href="/mobile?from=totem"
+              className="mt-4 inline-flex items-center justify-center rounded-xl bg-[var(--accent-strong)] px-6 py-3.5 text-base font-medium text-white shadow-lg shadow-[var(--accent-strong)]/25 transition-all hover:bg-[var(--accent)] active:scale-[0.97]"
+            >
+              Hacé tus pronósticos
+            </Link>
+          </div>
+          <div className="shrink-0 rounded-2xl border border-white/10 bg-white p-3">
+            <QRCode url={url} size={140} />
+          </div>
+        </section>
+
+        {/* Ranking */}
+        <section className="mb-7">
+          <Suspense fallback={<RankingSkeleton />}>
             <RankingTable />
           </Suspense>
-        </div>
+        </section>
 
-        <div className="w-[30%] flex flex-col items-center gap-6 pt-8">
-          <Link
-            href="/mobile?from=totem"
-            className="w-full px-6 py-5 rounded-2xl bg-blue-600 text-white text-xl font-bold text-center hover:bg-blue-700 active:scale-95 transition-all"
-          >
-            Hacé tus pronósticos
-          </Link>
-
-          <div className="flex flex-col items-center gap-3">
-            <p className="text-sm text-gray-500 text-center">O escaneá el código</p>
-            <div className="bg-white/5 backdrop-blur-md rounded-2xl p-4 border border-white/10">
-              <QRCode url={url} size={180} />
-            </div>
-          </div>
-
-          <Suspense fallback={null}>
+        {/* Today / Tomorrow */}
+        <section className="animate-rise" style={{ animationDelay: '120ms' }}>
+          <Suspense fallback={<MatchesSkeleton />}>
             <HoyManana hoy={hoy} manana={manana} />
           </Suspense>
-        </div>
+        </section>
       </div>
-    </div>
     </InactivityGuard>
   )
 }

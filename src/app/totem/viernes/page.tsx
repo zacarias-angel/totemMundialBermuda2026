@@ -1,12 +1,17 @@
+export const dynamic = 'force-dynamic'
 import { Suspense } from 'react'
+import { InactivityGuard } from '@/components/totem/InactivityGuard'
 import { ViernesDisplay } from '@/components/totem/ViernesDisplay'
+import { ViernesSkeleton } from '@/components/totem/Skeletons'
 
 export default function TotemViernes() {
   return (
-    <div className="relative min-h-screen flex flex-col items-center p-4 sm:p-8 pt-20">
-      <Suspense fallback={<p className="text-gray-400">Cargando...</p>}>
-        <ViernesDisplay />
-      </Suspense>
-    </div>
+    <InactivityGuard>
+      <div className="mx-auto flex w-full max-w-2xl flex-col px-5 pb-16 pt-20 sm:px-8">
+        <Suspense fallback={<ViernesSkeleton />}>
+          <ViernesDisplay />
+        </Suspense>
+      </div>
+    </InactivityGuard>
   )
 }

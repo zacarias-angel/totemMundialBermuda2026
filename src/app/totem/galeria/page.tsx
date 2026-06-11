@@ -3,6 +3,7 @@
 import { useState, useEffect, useCallback } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
+import { GallerySkeleton } from '@/components/totem/Skeletons'
 
 interface Photo {
   id: string
@@ -13,6 +14,7 @@ interface Photo {
 export default function GaleriaPage() {
   const [photos, setPhotos] = useState<Photo[]>([])
   const [selected, setSelected] = useState<Photo | null>(null)
+  const [loading, setLoading] = useState(true)
 
   const load = useCallback(async () => {
     try {
@@ -21,6 +23,8 @@ export default function GaleriaPage() {
       setPhotos(Array.isArray(data) ? data : [])
     } catch {
       setPhotos([])
+    } finally {
+      setLoading(false)
     }
   }, [])
 
@@ -46,66 +50,67 @@ export default function GaleriaPage() {
   }
 
   return (
-    <div className="relative min-h-screen bg-black text-white p-6 pb-24">
-      <div className="max-w-4xl mx-auto">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-4xl font-bold">Galería</h1>
+    <div className="mx-auto w-full max-w-3xl px-5 pb-16 pt-20 sm:px-8">
+      <div className="animate-rise mb-7 flex items-end justify-between gap-4">
+        <div>
+          <p className="mb-1 text-[11px] font-medium uppercase tracking-[0.18em] text-white/40">Fotofiguritas</p>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Galería</h1>
+        </div>
+        <Link
+          href="/totem/fotofigurita"
+          className="rounded-xl bg-[var(--accent-strong)] px-5 py-3 text-sm font-medium text-white shadow-lg shadow-[var(--accent-strong)]/25 transition-all hover:bg-[var(--accent)] active:scale-[0.97]"
+        >
+          Nueva foto
+        </Link>
+      </div>
+
+      {loading ? (
+        <GallerySkeleton />
+      ) : photos.length === 0 ? (
+        <div className="animate-fade rounded-3xl border border-white/[0.07] bg-white/[0.02] py-20 text-center">
+          <p className="mb-5 text-lg text-white/45">Todavía no hay fotos</p>
           <Link
             href="/totem/fotofigurita"
-            className="px-6 py-3 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 active:scale-95 transition-all"
+            className="inline-block rounded-xl bg-[var(--accent-strong)] px-7 py-3.5 font-medium text-white shadow-lg shadow-[var(--accent-strong)]/25 transition-all hover:bg-[var(--accent)] active:scale-[0.97]"
           >
-            Nueva foto
+            Sacar la primera foto
           </Link>
         </div>
-
-        {photos.length === 0 ? (
-          <div className="text-center py-24">
-            <p className="text-gray-500 text-xl mb-4">Todavía no hay fotos</p>
-            <Link
-              href="/totem/fotofigurita"
-              className="inline-block px-8 py-4 rounded-xl bg-blue-600 text-white text-lg font-semibold hover:bg-blue-700 transition-all"
+      ) : (
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3 animate-fade">
+          {photos.map((photo, i) => (
+            <button
+              key={photo.id}
+              onClick={() => setSelected(photo)}
+              className="group animate-rise relative aspect-[3/4] overflow-hidden rounded-2xl border border-white/[0.08] bg-white/[0.03] transition-all hover:border-[var(--accent)]/50 hover:shadow-xl hover:shadow-black/40"
+              style={{ animationDelay: `${Math.min(i * 40, 320)}ms` }}
             >
-              Sacar la primera foto
-            </Link>
-          </div>
-        ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-4">
-            {photos.map((photo) => (
-              <button
-                key={photo.id}
-                onClick={() => setSelected(photo)}
-                className="group relative aspect-[3/4] rounded-2xl overflow-hidden bg-zinc-900 border border-white/10 hover:border-blue-500/50 transition-all"
-              >
-                <Image
-                  src={photo.url}
-                  alt=""
-                  width={300}
-                  height={400}
-                  className="w-full h-full object-cover"
-                  unoptimized
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                <p className="absolute bottom-2 left-2 text-xs text-white/80 opacity-0 group-hover:opacity-100 transition-opacity">
-                  {formatDate(photo.createdAt)}
-                </p>
-              </button>
-            ))}
-          </div>
-        )}
-      </div>
+              <Image
+                src={photo.url}
+                alt=""
+                width={300}
+                height={400}
+                className="h-full w-full object-cover transition-transform duration-300 group-hover:scale-[1.03]"
+                unoptimized
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 transition-opacity group-hover:opacity-100" />
+              <p className="absolute bottom-2.5 left-3 right-3 truncate text-left text-xs text-white/80 opacity-0 transition-opacity group-hover:opacity-100">
+                {formatDate(photo.createdAt)}
+              </p>
+            </button>
+          ))}
+        </div>
+      )}
 
       {selected && (
         <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4"
+          className="fixed inset-0 z-50 flex items-center justify-center bg-black/90 p-4 backdrop-blur-md animate-fade"
           onClick={() => setSelected(null)}
         >
-          <div
-            className="relative max-w-lg w-full"
-            onClick={(e) => e.stopPropagation()}
-          >
+          <div className="relative w-full max-w-lg animate-rise" onClick={(e) => e.stopPropagation()}>
             <button
               onClick={() => setSelected(null)}
-              className="absolute -top-12 right-0 text-white/70 hover:text-white text-2xl"
+              className="absolute -top-12 right-0 flex h-9 w-9 items-center justify-center rounded-full text-white/60 transition-colors hover:bg-white/10 hover:text-white"
             >
               ✕
             </button>
@@ -114,12 +119,12 @@ export default function GaleriaPage() {
               alt="Foto"
               width={600}
               height={800}
-              className="w-full rounded-2xl shadow-2xl"
+              className="w-full rounded-3xl shadow-2xl shadow-black/60"
               unoptimized
             />
-            <div className="flex items-center justify-between mt-4">
-              <p className="text-gray-400 text-sm">{formatDate(selected.createdAt)}</p>
-              <div className="flex gap-3">
+            <div className="mt-4 flex items-center justify-between gap-3">
+              <p className="text-sm text-white/40">{formatDate(selected.createdAt)}</p>
+              <div className="flex gap-2.5">
                 <button
                   onClick={() => {
                     const a = document.createElement('a')
@@ -127,13 +132,13 @@ export default function GaleriaPage() {
                     a.href = selected.url
                     a.click()
                   }}
-                  className="px-5 py-2 rounded-xl bg-blue-600 text-white font-semibold hover:bg-blue-700 active:scale-95 transition-all"
+                  className="rounded-xl bg-[var(--accent-strong)] px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-[var(--accent)] active:scale-[0.97]"
                 >
                   Descargar
                 </button>
                 <button
                   onClick={() => handleDelete(selected.id)}
-                  className="px-5 py-2 rounded-xl bg-red-600/80 text-white font-semibold hover:bg-red-700 active:scale-95 transition-all"
+                  className="rounded-xl bg-red-500/90 px-5 py-2.5 text-sm font-medium text-white transition-all hover:bg-red-500 active:scale-[0.97]"
                 >
                   Eliminar
                 </button>

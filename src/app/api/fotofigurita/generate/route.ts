@@ -19,6 +19,17 @@ Do not use photorealism. Do not use realistic skin texture, pores, wrinkles, fac
 Do not alter the card frame, background design, logos, typography, or layout.
 The face should look 100% animated-cartoon and 0% photographic.`
 
+/*const FIGURITA_PROMPT_BASE = `Create a FIFA World Cup 2026 Argentina Panini-style trading card.
+Use the first reference image as the exact card template — preserve all layout, colors, jersey, logos, decorative elements, typography, and name bars exactly as shown.
+Take the person from the second reference image (selfie) and place their head in the white head cutout area above the jersey collar.
+Face style: photorealistic Argentine gaucho inspired by the classic illustrations of Florencio Molina Campos. Preserve the person's identity and facial likeness from the selfie, but reinterpret their expression, facial proportions, and character with the charm, warmth, and rural Argentine personality seen in traditional gaucho artwork.
+The person should have a friendly, charismatic, slightly mischievous expression typical of Argentine countryside characters. Subtle stylization is allowed, but the result must remain highly realistic and believable as a real photograph.
+Use natural skin texture, realistic lighting, realistic hair, and authentic facial details. Avoid cartoon, animation, Pixar, Disney, comic-book, or caricature rendering.
+The overall feeling should evoke Argentine gaucho culture and the visual spirit of classic rural Argentine illustrations while maintaining a premium, photorealistic Panini World Cup sticker appearance.
+Maintain the official Panini sticker aesthetic. The head should blend naturally with the Argentina jersey and card design.
+Do not alter the card frame, background design, logos, typography, or layout.`*/
+
+
 function buildFiguritaPrompt(playerName?: string | null): string {
   if (playerName?.trim()) {
     return `${FIGURITA_PROMPT_BASE}

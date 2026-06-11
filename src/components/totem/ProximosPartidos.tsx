@@ -1,5 +1,4 @@
 import { getUpcomingMatches } from '@/services/fixture'
-import { Card } from '@/components/ui/Card'
 import { Flag } from '@/components/ui/Flag'
 
 function formatDate(dateStr: string) {
@@ -11,7 +10,11 @@ export async function ProximosPartidos() {
   const matches = await getUpcomingMatches(20)
 
   if (matches.length === 0) {
-    return <p className="text-gray-400 text-center py-8">No hay próximos partidos</p>
+    return (
+      <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] py-16 text-center animate-fade">
+        <p className="text-white/40">No hay próximos partidos</p>
+      </div>
+    )
   }
 
   const grouped: Record<string, typeof matches> = {}
@@ -22,35 +25,43 @@ export async function ProximosPartidos() {
   }
 
   return (
-    <div className="flex flex-col gap-6">
+    <div className="flex flex-col gap-7 animate-rise">
       {Object.entries(grouped).map(([date, dayMatches]) => (
         <div key={date}>
-          <h2 className="text-xl font-bold mb-3 capitalize">{formatDate(date)}</h2>
-          <div className="flex flex-col gap-3">
+          <h2 className="mb-3 flex items-center gap-2.5 text-sm font-semibold capitalize tracking-tight text-white/70">
+            <span className="h-1.5 w-1.5 rounded-full bg-[var(--accent)]" />
+            {formatDate(date)}
+          </h2>
+          <div className="flex flex-col gap-2.5">
             {dayMatches.map((match) => (
-              <Card key={match.id}>
+              <div
+                key={match.id}
+                className="rounded-2xl border border-white/[0.07] bg-white/[0.03] p-4 transition-colors hover:bg-white/[0.05]"
+              >
                 <div className="flex items-center justify-between gap-4">
-                  <div className="flex-1 text-right flex items-center justify-end gap-2">
-                    <span className="text-lg font-semibold">{match.home_team?.name}</span>
+                  <div className="flex flex-1 items-center justify-end gap-2 text-right">
+                    <span className="font-semibold">{match.home_team?.name}</span>
                     <Flag name={match.home_team?.name} className="text-xl" />
                   </div>
 
-                  <div className="text-center shrink-0 flex flex-col items-center">
-                    {match.match_time && (
-                      <span className="text-sm font-bold text-yellow-400 tabular-nums">{match.match_time}</span>
+                  <div className="shrink-0">
+                    {match.match_time ? (
+                      <span className="rounded-lg bg-white/[0.06] px-2.5 py-1 text-sm font-bold tabular-nums text-amber-300">
+                        {match.match_time}
+                      </span>
+                    ) : (
+                      <span className="text-sm text-white/30">vs</span>
                     )}
                   </div>
 
-                  <div className="flex-1 text-left flex items-center gap-2">
+                  <div className="flex flex-1 items-center gap-2 text-left">
                     <Flag name={match.away_team?.name} className="text-xl" />
-                    <span className="text-lg font-semibold">{match.away_team?.name}</span>
+                    <span className="font-semibold">{match.away_team?.name}</span>
                   </div>
                 </div>
 
-                <div className="text-xs text-gray-500 text-center mt-1">
-                  {match.round}
-                </div>
-              </Card>
+                <div className="mt-2 text-center text-xs text-white/30">{match.round}</div>
+              </div>
             ))}
           </div>
         </div>

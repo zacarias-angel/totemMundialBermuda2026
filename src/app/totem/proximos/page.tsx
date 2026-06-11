@@ -2,18 +2,20 @@ export const dynamic = 'force-dynamic'
 import { Suspense } from 'react'
 import { InactivityGuard } from '@/components/totem/InactivityGuard'
 import { ProximosPartidos } from '@/components/totem/ProximosPartidos'
+import { MatchesSkeleton } from '@/components/totem/Skeletons'
 
 export default function ProximosPage() {
   return (
     <InactivityGuard>
-      <div className="relative min-h-screen p-4 sm:p-8 pt-20">
-        <h1 className="text-3xl sm:text-4xl font-bold mb-8 text-center">Próximos Partidos</h1>
+      <div className="mx-auto w-full max-w-2xl px-5 pb-16 pt-20 sm:px-8">
+        <header className="animate-rise mb-7">
+          <p className="mb-1 text-[11px] font-medium uppercase tracking-[0.18em] text-white/40">Fixture</p>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Próximos Partidos</h1>
+        </header>
 
-        <div className="max-w-4xl mx-auto">
-          <Suspense fallback={<p className="text-gray-400 text-center">Cargando partidos...</p>}>
-            <ProximosPartidos />
-          </Suspense>
-        </div>
+        <Suspense fallback={<MatchesSkeleton />}>
+          <ProximosPartidos />
+        </Suspense>
       </div>
     </InactivityGuard>
   )

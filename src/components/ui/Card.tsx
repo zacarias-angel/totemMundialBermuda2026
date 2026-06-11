@@ -7,10 +7,10 @@ interface CardProps extends HTMLAttributes<HTMLDivElement> {
 export function Card({ highlight, className = '', children, ...props }: CardProps) {
   return (
     <div
-      className={`rounded-2xl p-4 ${
+      className={`rounded-2xl p-4 transition-all duration-200 ${
         highlight
-          ? 'bg-blue-600/20 border border-blue-500/40'
-          : 'bg-white/10 border border-white/20'
+          ? 'bg-[var(--accent-soft)] border border-[var(--accent)]/30'
+          : 'bg-white/[0.035] border border-white/[0.08]'
       } ${className}`}
       {...props}
     >

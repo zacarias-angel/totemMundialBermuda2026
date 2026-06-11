@@ -5,23 +5,12 @@ export async function RankingTable() {
   const ranking = await getRanking()
 
   if (ranking.length === 0) {
-    return <p className="text-gray-400 text-center py-8">Todavía no hay pronósticos</p>
+    return (
+      <div className="rounded-2xl border border-white/[0.06] bg-white/[0.02] py-16 text-center animate-fade">
+        <p className="text-white/40">Todavía no hay pronósticos</p>
+      </div>
+    )
   }
 
-  return (
-    <div className="w-full">
-      <table className="w-full text-left">
-        <thead>
-          <tr className="text-xs uppercase tracking-wider text-gray-400 border-b border-white/10">
-            <th className="pb-3 font-medium">#</th>
-            <th className="pb-3 font-medium">Nombre</th>
-            <th className="pb-3 font-medium text-right">Pronósticos</th>
-            <th className="pb-3 font-medium text-right">Aciertos</th>
-            <th className="pb-3 font-medium text-right">Puntos</th>
-          </tr>
-        </thead>
-        <RankingTableClient ranking={ranking} />
-      </table>
-    </div>
-  )
+  return <RankingTableClient ranking={ranking} />
 }
