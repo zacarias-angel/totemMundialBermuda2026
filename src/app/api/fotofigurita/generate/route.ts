@@ -19,14 +19,42 @@ Do not use photorealism. Do not use realistic skin texture, pores, wrinkles, fac
 Do not alter the card frame, background design, logos, typography, or layout.
 The face should look 100% animated-cartoon and 0% photographic.`
 
-function buildFiguritaPrompt(playerName?: string | null): string {
-  if (playerName?.trim()) {
-    return `${FIGURITA_PROMPT_BASE}
-Write the player's name exactly as "${playerName.trim()}" in the bottom name bar of the card. Do not invent or change the name.`
-  }
+const FUNNY_PHRASES = [
+  'Jugador de toda la cancha',
+  'Crack del potrero',
+  'Mejor en el FIFA que en la cancha',
+  'Titular indiscutido del asado',
+  'Figura del grupo de WhatsApp',
+  'Pierna fuerte, ego más fuerte',
+  'Campeón moral',
+  'Capitán del banco de suplentes',
+  'Promesa eterna',
+  'Velocidad de tractor',
+  'Gambeta solo en la previa',
+  'El 10 que nadie pidió',
+  'Killer del área… chica',
+  'Cabeza de área, pies de utilería',
+  'Más vendido que figurita repetida',
+  'Crack en modo demo',
+  'Desequilibrante en el FIFA',
+  'Suplente de lujo (del utilero)',
+]
+
+function pickPhrase(): string {
+  return FUNNY_PHRASES[Math.floor(Math.random() * FUNNY_PHRASES.length)]
+}
+
+function buildFiguritaPrompt(playerName: string | null, phrase: string): string {
+  const upperName = playerName?.trim().toUpperCase()
+  const namePart = upperName
+    ? `In the upper name bar at the bottom of the card, write the player's name exactly as "${upperName}" in all uppercase letters. The name must be perfectly centered both horizontally and vertically inside that bar, on a single line. Do not invent or change the name.`
+    : `Leave the upper name bar empty (no name and no invented text).`
+
+  const phrasePart = `In the lower bar (the empty bar directly below the name bar), write the short phrase exactly as "${phrase}". Center it perfectly both horizontally and vertically inside the bar, on a single line, fully legible and fitting within the bar, matching the card's typography style.`
 
   return `${FIGURITA_PROMPT_BASE}
-Leave the bottom name bars empty. Do not write any name or invented text on the card.`
+${namePart}
+${phrasePart}`
 }
 
 const rateLimitMap = new Map<string, number[]>()
@@ -86,7 +114,7 @@ export async function POST(req: Request) {
 
     const user = await getCurrentUser()
     const playerName = playerNameFromForm || user?.name || null
-    const prompt = buildFiguritaPrompt(playerName)
+    const prompt = buildFiguritaPrompt(playerName, pickPhrase())
 
     const selfieBuffer = Buffer.from(await selfie.arrayBuffer())
     const templateBuffer = getTemplateBuffer()

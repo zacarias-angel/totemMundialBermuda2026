@@ -38,23 +38,23 @@ export default async function TotemHome() {
 
         {/* Join card */}
         <section
-          className="animate-rise mb-7 flex flex-col items-center gap-5 rounded-3xl border border-white/[0.08] bg-white/[0.03] p-5 sm:flex-row"
+          className="animate-rise mb-7 flex flex-row items-center gap-4 rounded-2xl border border-white/[0.08] bg-white/[0.03] p-4"
           style={{ animationDelay: '60ms' }}
         >
-          <div className="flex-1 text-center sm:text-left">
-            <h2 className="text-xl font-semibold tracking-tight">¿Querés jugar?</h2>
-            <p className="mt-1 text-sm text-white/55">
-              Escaneá el código o tocá el botón para hacer tus pronósticos.
+          <div className="min-w-0 flex-1">
+            <h2 className="text-lg font-semibold tracking-tight">¿Querés jugar?</h2>
+            <p className="mt-1 text-[13px] leading-snug text-white/55">
+              Escaneá el código o tocá el botón.
             </p>
             <Link
               href="/mobile?from=totem"
-              className="mt-4 inline-flex items-center justify-center rounded-xl bg-[var(--accent-strong)] px-6 py-3.5 text-base font-medium text-white shadow-lg shadow-[var(--accent-strong)]/25 transition-all hover:bg-[var(--accent)] active:scale-[0.97]"
+              className="mt-3 inline-flex items-center justify-center rounded-lg bg-[var(--accent-strong)] px-4 py-2.5 text-sm font-medium text-white shadow-md shadow-[var(--accent-strong)]/20 transition-all hover:bg-[var(--accent)] active:scale-[0.97]"
             >
               Hacé tus pronósticos
             </Link>
           </div>
-          <div className="shrink-0 rounded-2xl border border-white/10 bg-white p-3">
-            <QRCode url={url} size={140} />
+          <div className="shrink-0 rounded-xl border border-white/10 bg-white p-2">
+            <QRCode url={url} size={96} />
           </div>
         </section>
 

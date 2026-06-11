@@ -8,6 +8,7 @@ export function FotofiguritaClient() {
   const canvasRef = useRef<HTMLCanvasElement>(null)
   const streamRef = useRef<MediaStream | null>(null)
   const countdownTimerRef = useRef<ReturnType<typeof setInterval> | null>(null)
+  const capturingRef = useRef(false)
 
   const [playerName, setPlayerName] = useState('')
   const [showNameInput, setShowNameInput] = useState(true)
@@ -79,10 +80,12 @@ export function FotofiguritaClient() {
   }
 
   const doCapture = useCallback(async () => {
+    if (capturingRef.current) return
     const video = videoRef.current
     const canvas = canvasRef.current
     if (!video || !canvas) return
 
+    capturingRef.current = true
     setGenerating(true)
     setGenerateError('')
 
@@ -152,18 +155,30 @@ export function FotofiguritaClient() {
       startCamera()
     } finally {
       setGenerating(false)
+      capturingRef.current = false
     }
   }, [playerName])
+
+  // Trigger the capture only once when the countdown reaches 0.
+  // (Calling side effects inside a setState updater runs twice under
+  //  React Strict Mode, which caused duplicate generations.)
+  useEffect(() => {
+    if (countdown === 0) {
+      doCapture()
+    }
+  }, [countdown, doCapture])
 
   const startCountdown = () => {
     setCountdown(3)
     countdownTimerRef.current = setInterval(() => {
       setCountdown((prev) => {
-        if (prev === null || prev <= 1) {
-          if (countdownTimerRef.current) clearInterval(countdownTimerRef.current)
-          countdownTimerRef.current = null
-          doCapture()
-          return null
+        if (prev === null) return null
+        if (prev <= 1) {
+          if (countdownTimerRef.current) {
+            clearInterval(countdownTimerRef.current)
+            countdownTimerRef.current = null
+          }
+          return 0
         }
         return prev - 1
       })
@@ -318,7 +333,7 @@ export function FotofiguritaClient() {
           className="absolute inset-0 w-full h-full object-cover z-10 [transform:scaleX(-1)]"
         />
 
-        {countdown !== null && (
+        {countdown !== null && countdown > 0 && (
           <div className="absolute inset-0 flex items-center justify-center bg-black/50 z-20">
             <span className="text-9xl font-bold text-white drop-shadow-2xl animate-ping">
               {countdown}

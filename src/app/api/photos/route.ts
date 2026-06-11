@@ -28,10 +28,16 @@ export async function GET() {
       .filter((f) => f.name.endsWith('.webp'))
       .map((f) => {
         const { data: { publicUrl } } = supabase.storage.from(BUCKET).getPublicUrl(f.name)
+        const fromName = Number(f.name.split('_')[0])
+        const ts = Number.isFinite(fromName)
+          ? fromName
+          : f.created_at
+            ? Date.parse(f.created_at)
+            : 0
         return {
           id: f.name.replace('.webp', ''),
           url: publicUrl,
-          createdAt: f.created_at ?? f.name.split('_')[0],
+          createdAt: String(ts),
         }
       })
       .sort((a, b) => Number(b.createdAt) - Number(a.createdAt))
