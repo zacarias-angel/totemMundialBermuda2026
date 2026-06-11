@@ -42,5 +42,5 @@ export async function getRanking() {
   }
 
   return Array.from(rankMap.values())
-    .sort((a, b) => b.count - a.count || b.total - a.total || b.exact - a.exact)
+    .sort((a, b) => b.total - a.total || (b.correct + b.exact) - (a.correct + a.exact) || b.count - a.count)
 }
