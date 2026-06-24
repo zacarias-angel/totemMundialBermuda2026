@@ -3,11 +3,23 @@ import { createServerSupabaseClient } from '@/lib/supabase/server'
 export async function getRanking() {
   const supabase = await createServerSupabaseClient()
 
-  const { data } = await supabase
-    .from('predictions')
-    .select('points, user_id')
+  const PAGE = 1000
+  let allRows: { points: number | null; user_id: string }[] = []
+  let from = 0
 
-  if (!data) return []
+  while (true) {
+    const { data, error } = await supabase
+      .from('predictions')
+      .select('points, user_id')
+      .range(from, from + PAGE - 1)
+
+    if (error || !data || data.length === 0) break
+    allRows = allRows.concat(data)
+    if (data.length < PAGE) break
+    from += PAGE
+  }
+
+  if (allRows.length === 0) return []
 
   const { data: users } = await supabase
     .from('users')
@@ -17,7 +29,7 @@ export async function getRanking() {
 
   const rankMap = new Map<string, { name: string; email: string; userId: string; total: number; exact: number; correct: number; count: number }>()
 
-  for (const row of data) {
+  for (const row of allRows) {
     const u = userMap.get(row.user_id)
     if (!u) continue
 

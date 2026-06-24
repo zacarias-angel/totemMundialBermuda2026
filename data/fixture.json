@@ -6,10 +6,10 @@
       "matches": [
         { "matchday": 1, "home": "Mexico", "away": "South Africa", "date": "2026-06-11", "time": "16:00" },
         { "matchday": 1, "home": "South Korea", "away": "Czechia", "date": "2026-06-11", "time": "23:00" },
-        { "matchday": 2, "home": "Czechia", "away": "South Africa", "date": "2026-06-16", "time": "16:00" },
-        { "matchday": 2, "home": "Mexico", "away": "South Korea", "date": "2026-06-16", "time": "22:00" },
-        { "matchday": 3, "home": "South Africa", "away": "South Korea", "date": "2026-06-21", "time": "22:00" },
-        { "matchday": 3, "home": "Czechia", "away": "Mexico", "date": "2026-06-21", "time": "22:00" }
+        { "matchday": 2, "home": "Czechia", "away": "South Africa", "date": "2026-06-18", "time": "13:00" },
+        { "matchday": 2, "home": "Mexico", "away": "South Korea", "date": "2026-06-18", "time": "21:00" },
+        { "matchday": 3, "home": "South Africa", "away": "South Korea", "date": "2026-06-24", "time": "21:00" },
+        { "matchday": 3, "home": "Czechia", "away": "Mexico", "date": "2026-06-24", "time": "21:00" }
       ]
     },
     {
@@ -17,166 +17,166 @@
       "teams": ["Canada", "Bosnia and Herzegovina", "Qatar", "Switzerland"],
       "matches": [
         { "matchday": 1, "home": "Canada", "away": "Bosnia and Herzegovina", "date": "2026-06-12", "time": "16:00" },
-        { "matchday": 1, "home": "Qatar", "away": "Switzerland", "date": "2026-06-12", "time": "22:00" },
-        { "matchday": 2, "home": "Switzerland", "away": "Bosnia and Herzegovina", "date": "2026-06-16", "time": "13:00" },
-        { "matchday": 2, "home": "Canada", "away": "Qatar", "date": "2026-06-16", "time": "19:00" },
-        { "matchday": 3, "home": "Switzerland", "away": "Canada", "date": "2026-06-21", "time": "16:00" },
-        { "matchday": 3, "home": "Bosnia and Herzegovina", "away": "Qatar", "date": "2026-06-21", "time": "19:00" }
+        { "matchday": 1, "home": "Qatar", "away": "Switzerland", "date": "2026-06-13", "time": "16:00" },
+        { "matchday": 2, "home": "Switzerland", "away": "Bosnia and Herzegovina", "date": "2026-06-18", "time": "16:00" },
+        { "matchday": 2, "home": "Canada", "away": "Qatar", "date": "2026-06-18", "time": "19:00" },
+        { "matchday": 3, "home": "Switzerland", "away": "Canada", "date": "2026-06-24", "time": "16:00" },
+        { "matchday": 3, "home": "Bosnia and Herzegovina", "away": "Qatar", "date": "2026-06-24", "time": "16:00" }
       ]
     },
     {
       "name": "C",
       "teams": ["Brazil", "Morocco", "Haiti", "Scotland"],
       "matches": [
-        { "matchday": 1, "home": "Brazil", "away": "Morocco", "date": "2026-06-12", "time": "16:00" },
-        { "matchday": 1, "home": "Haiti", "away": "Scotland", "date": "2026-06-12", "time": "22:00" },
-        { "matchday": 2, "home": "Scotland", "away": "Morocco", "date": "2026-06-17", "time": "16:00" },
-        { "matchday": 2, "home": "Brazil", "away": "Haiti", "date": "2026-06-17", "time": "22:00" },
-        { "matchday": 3, "home": "Scotland", "away": "Brazil", "date": "2026-06-22", "time": "16:00" },
-        { "matchday": 3, "home": "Morocco", "away": "Haiti", "date": "2026-06-22", "time": "22:00" }
+        { "matchday": 1, "home": "Brazil", "away": "Morocco", "date": "2026-06-13", "time": "19:00" },
+        { "matchday": 1, "home": "Haiti", "away": "Scotland", "date": "2026-06-13", "time": "22:00" },
+        { "matchday": 2, "home": "Scotland", "away": "Morocco", "date": "2026-06-19", "time": "19:00" },
+        { "matchday": 2, "home": "Brazil", "away": "Haiti", "date": "2026-06-19", "time": "21:30" },
+        { "matchday": 3, "home": "Scotland", "away": "Brazil", "date": "2026-06-24", "time": "19:00" },
+        { "matchday": 3, "home": "Morocco", "away": "Haiti", "date": "2026-06-24", "time": "19:00" }
       ]
     },
     {
       "name": "D",
       "teams": ["United States", "Paraguay", "Australia", "Türkiye"],
       "matches": [
-        { "matchday": 1, "home": "United States", "away": "Paraguay", "date": "2026-06-12", "time": "13:00" },
-        { "matchday": 1, "home": "Australia", "away": "Türkiye", "date": "2026-06-12", "time": "19:00" },
-        { "matchday": 2, "home": "United States", "away": "Australia", "date": "2026-06-17", "time": "13:00" },
-        { "matchday": 2, "home": "Türkiye", "away": "Paraguay", "date": "2026-06-17", "time": "19:00" },
-        { "matchday": 3, "home": "Türkiye", "away": "United States", "date": "2026-06-22", "time": "13:00" },
-        { "matchday": 3, "home": "Paraguay", "away": "Australia", "date": "2026-06-22", "time": "19:00" }
+        { "matchday": 1, "home": "United States", "away": "Paraguay", "date": "2026-06-12", "time": "22:00" },
+        { "matchday": 1, "home": "Australia", "away": "Türkiye", "date": "2026-06-13", "time": "22:00" },
+        { "matchday": 2, "home": "United States", "away": "Australia", "date": "2026-06-19", "time": "16:00" },
+        { "matchday": 2, "home": "Türkiye", "away": "Paraguay", "date": "2026-06-19", "time": "23:00" },
+        { "matchday": 3, "home": "Türkiye", "away": "United States", "date": "2026-06-25", "time": "23:00" },
+        { "matchday": 3, "home": "Paraguay", "away": "Australia", "date": "2026-06-25", "time": "23:00" }
       ]
     },
     {
       "name": "E",
       "teams": ["Germany", "Curacao", "Ivory Coast", "Ecuador"],
       "matches": [
-        { "matchday": 1, "home": "Germany", "away": "Curacao", "date": "2026-06-13", "time": "16:00" },
-        { "matchday": 1, "home": "Ivory Coast", "away": "Ecuador", "date": "2026-06-13", "time": "22:00" },
-        { "matchday": 2, "home": "Germany", "away": "Ivory Coast", "date": "2026-06-18", "time": "16:00" },
-        { "matchday": 2, "home": "Ecuador", "away": "Curacao", "date": "2026-06-18", "time": "22:00" },
-        { "matchday": 3, "home": "Curacao", "away": "Ivory Coast", "date": "2026-06-23", "time": "16:00" },
-        { "matchday": 3, "home": "Ecuador", "away": "Germany", "date": "2026-06-23", "time": "22:00" }
+        { "matchday": 1, "home": "Germany", "away": "Curacao", "date": "2026-06-14", "time": "14:00" },
+        { "matchday": 1, "home": "Ivory Coast", "away": "Ecuador", "date": "2026-06-14", "time": "20:00" },
+        { "matchday": 2, "home": "Germany", "away": "Ivory Coast", "date": "2026-06-20", "time": "17:00" },
+        { "matchday": 2, "home": "Ecuador", "away": "Curacao", "date": "2026-06-20", "time": "20:00" },
+        { "matchday": 3, "home": "Curacao", "away": "Ivory Coast", "date": "2026-06-25", "time": "17:00" },
+        { "matchday": 3, "home": "Ecuador", "away": "Germany", "date": "2026-06-25", "time": "17:00" }
       ]
     },
     {
       "name": "F",
       "teams": ["Netherlands", "Japan", "Sweden", "Tunisia"],
       "matches": [
-        { "matchday": 1, "home": "Netherlands", "away": "Japan", "date": "2026-06-13", "time": "13:00" },
-        { "matchday": 1, "home": "Sweden", "away": "Tunisia", "date": "2026-06-13", "time": "19:00" },
-        { "matchday": 2, "home": "Netherlands", "away": "Sweden", "date": "2026-06-18", "time": "13:00" },
-        { "matchday": 2, "home": "Tunisia", "away": "Japan", "date": "2026-06-18", "time": "19:00" },
-        { "matchday": 3, "home": "Japan", "away": "Sweden", "date": "2026-06-23", "time": "13:00" },
-        { "matchday": 3, "home": "Tunisia", "away": "Netherlands", "date": "2026-06-23", "time": "19:00" }
+        { "matchday": 1, "home": "Netherlands", "away": "Japan", "date": "2026-06-14", "time": "17:00" },
+        { "matchday": 1, "home": "Sweden", "away": "Tunisia", "date": "2026-06-14", "time": "23:00" },
+        { "matchday": 2, "home": "Netherlands", "away": "Sweden", "date": "2026-06-20", "time": "14:00" },
+        { "matchday": 2, "home": "Tunisia", "away": "Japan", "date": "2026-06-20", "time": "23:00" },
+        { "matchday": 3, "home": "Japan", "away": "Sweden", "date": "2026-06-25", "time": "20:00" },
+        { "matchday": 3, "home": "Tunisia", "away": "Netherlands", "date": "2026-06-25", "time": "20:00" }
       ]
     },
     {
       "name": "G",
       "teams": ["Belgium", "Egypt", "Iran", "New Zealand"],
       "matches": [
-        { "matchday": 1, "home": "Belgium", "away": "Egypt", "date": "2026-06-14", "time": "16:00" },
-        { "matchday": 1, "home": "Iran", "away": "New Zealand", "date": "2026-06-14", "time": "22:00" },
-        { "matchday": 2, "home": "Belgium", "away": "Iran", "date": "2026-06-19", "time": "16:00" },
-        { "matchday": 2, "home": "New Zealand", "away": "Egypt", "date": "2026-06-19", "time": "22:00" },
-        { "matchday": 3, "home": "Egypt", "away": "Iran", "date": "2026-06-24", "time": "16:00" },
-        { "matchday": 3, "home": "New Zealand", "away": "Belgium", "date": "2026-06-24", "time": "22:00" }
+        { "matchday": 1, "home": "Belgium", "away": "Egypt", "date": "2026-06-15", "time": "16:00" },
+        { "matchday": 1, "home": "Iran", "away": "New Zealand", "date": "2026-06-15", "time": "22:00" },
+        { "matchday": 2, "home": "Belgium", "away": "Iran", "date": "2026-06-21", "time": "16:00" },
+        { "matchday": 2, "home": "New Zealand", "away": "Egypt", "date": "2026-06-21", "time": "22:00" },
+        { "matchday": 3, "home": "Egypt", "away": "Iran", "date": "2026-06-26", "time": "23:00" },
+        { "matchday": 3, "home": "New Zealand", "away": "Belgium", "date": "2026-06-26", "time": "23:00" }
       ]
     },
     {
       "name": "H",
       "teams": ["Spain", "Cape Verde", "Saudi Arabia", "Uruguay"],
       "matches": [
-        { "matchday": 1, "home": "Spain", "away": "Cape Verde", "date": "2026-06-14", "time": "13:00" },
-        { "matchday": 1, "home": "Saudi Arabia", "away": "Uruguay", "date": "2026-06-14", "time": "19:00" },
-        { "matchday": 2, "home": "Spain", "away": "Saudi Arabia", "date": "2026-06-19", "time": "13:00" },
-        { "matchday": 2, "home": "Uruguay", "away": "Cape Verde", "date": "2026-06-19", "time": "19:00" },
-        { "matchday": 3, "home": "Cape Verde", "away": "Saudi Arabia", "date": "2026-06-24", "time": "13:00" },
-        { "matchday": 3, "home": "Uruguay", "away": "Spain", "date": "2026-06-24", "time": "19:00" }
+        { "matchday": 1, "home": "Spain", "away": "Cape Verde", "date": "2026-06-15", "time": "13:00" },
+        { "matchday": 1, "home": "Saudi Arabia", "away": "Uruguay", "date": "2026-06-15", "time": "19:00" },
+        { "matchday": 2, "home": "Spain", "away": "Saudi Arabia", "date": "2026-06-21", "time": "13:00" },
+        { "matchday": 2, "home": "Uruguay", "away": "Cape Verde", "date": "2026-06-21", "time": "19:00" },
+        { "matchday": 3, "home": "Cape Verde", "away": "Saudi Arabia", "date": "2026-06-26", "time": "20:00" },
+        { "matchday": 3, "home": "Uruguay", "away": "Spain", "date": "2026-06-26", "time": "21:00" }
       ]
     },
     {
       "name": "I",
       "teams": ["France", "Senegal", "Iraq", "Norway"],
       "matches": [
-        { "matchday": 1, "home": "France", "away": "Senegal", "date": "2026-06-15", "time": "16:00" },
-        { "matchday": 1, "home": "Iraq", "away": "Norway", "date": "2026-06-15", "time": "22:00" },
-        { "matchday": 2, "home": "France", "away": "Iraq", "date": "2026-06-20", "time": "16:00" },
-        { "matchday": 2, "home": "Norway", "away": "Senegal", "date": "2026-06-20", "time": "22:00" },
-        { "matchday": 3, "home": "Norway", "away": "France", "date": "2026-06-25", "time": "16:00" },
-        { "matchday": 3, "home": "Senegal", "away": "Iraq", "date": "2026-06-25", "time": "22:00" }
+        { "matchday": 1, "home": "France", "away": "Senegal", "date": "2026-06-16", "time": "16:00" },
+        { "matchday": 1, "home": "Iraq", "away": "Norway", "date": "2026-06-16", "time": "19:00" },
+        { "matchday": 2, "home": "France", "away": "Iraq", "date": "2026-06-22", "time": "18:00" },
+        { "matchday": 2, "home": "Norway", "away": "Senegal", "date": "2026-06-22", "time": "21:00" },
+        { "matchday": 3, "home": "Norway", "away": "France", "date": "2026-06-26", "time": "16:00" },
+        { "matchday": 3, "home": "Senegal", "away": "Iraq", "date": "2026-06-26", "time": "16:00" }
       ]
     },
     {
       "name": "J",
       "teams": ["Argentina", "Algeria", "Austria", "Jordan"],
       "matches": [
-        { "matchday": 1, "home": "Argentina", "away": "Algeria", "date": "2026-06-15", "time": "13:00" },
-        { "matchday": 1, "home": "Austria", "away": "Jordan", "date": "2026-06-15", "time": "19:00" },
-        { "matchday": 2, "home": "Argentina", "away": "Austria", "date": "2026-06-20", "time": "13:00" },
-        { "matchday": 2, "home": "Jordan", "away": "Algeria", "date": "2026-06-20", "time": "19:00" },
-        { "matchday": 3, "home": "Algeria", "away": "Austria", "date": "2026-06-25", "time": "13:00" },
-        { "matchday": 3, "home": "Jordan", "away": "Argentina", "date": "2026-06-25", "time": "19:00" }
+        { "matchday": 1, "home": "Argentina", "away": "Algeria", "date": "2026-06-16", "time": "22:00" },
+        { "matchday": 1, "home": "Austria", "away": "Jordan", "date": "2026-06-16", "time": "23:00" },
+        { "matchday": 2, "home": "Argentina", "away": "Austria", "date": "2026-06-22", "time": "14:00" },
+        { "matchday": 2, "home": "Jordan", "away": "Algeria", "date": "2026-06-22", "time": "23:00" },
+        { "matchday": 3, "home": "Algeria", "away": "Austria", "date": "2026-06-27", "time": "21:00" },
+        { "matchday": 3, "home": "Jordan", "away": "Argentina", "date": "2026-06-27", "time": "21:00" }
       ]
     },
     {
       "name": "K",
       "teams": ["Portugal", "DR Congo", "Uzbekistan", "Colombia"],
       "matches": [
-        { "matchday": 1, "home": "Portugal", "away": "DR Congo", "date": "2026-06-16", "time": "16:00" },
-        { "matchday": 1, "home": "Uzbekistan", "away": "Colombia", "date": "2026-06-16", "time": "22:00" },
-        { "matchday": 2, "home": "Portugal", "away": "Uzbekistan", "date": "2026-06-21", "time": "16:00" },
-        { "matchday": 2, "home": "Colombia", "away": "DR Congo", "date": "2026-06-21", "time": "19:00" },
-        { "matchday": 3, "home": "Colombia", "away": "Portugal", "date": "2026-06-26", "time": "16:00" },
-        { "matchday": 3, "home": "DR Congo", "away": "Uzbekistan", "date": "2026-06-26", "time": "22:00" }
+        { "matchday": 1, "home": "Portugal", "away": "DR Congo", "date": "2026-06-17", "time": "14:00" },
+        { "matchday": 1, "home": "Uzbekistan", "away": "Colombia", "date": "2026-06-17", "time": "23:00" },
+        { "matchday": 2, "home": "Portugal", "away": "Uzbekistan", "date": "2026-06-23", "time": "14:00" },
+        { "matchday": 2, "home": "Colombia", "away": "DR Congo", "date": "2026-06-23", "time": "21:00" },
+        { "matchday": 3, "home": "Colombia", "away": "Portugal", "date": "2026-06-27", "time": "20:30" },
+        { "matchday": 3, "home": "DR Congo", "away": "Uzbekistan", "date": "2026-06-27", "time": "20:30" }
       ]
     },
     {
       "name": "L",
       "teams": ["England", "Croatia", "Ghana", "Panama"],
       "matches": [
-        { "matchday": 1, "home": "England", "away": "Croatia", "date": "2026-06-16", "time": "13:00" },
-        { "matchday": 1, "home": "Ghana", "away": "Panama", "date": "2026-06-16", "time": "19:00" },
-        { "matchday": 2, "home": "England", "away": "Ghana", "date": "2026-06-21", "time": "13:00" },
-        { "matchday": 2, "home": "Panama", "away": "Croatia", "date": "2026-06-21", "time": "22:00" },
-        { "matchday": 3, "home": "Panama", "away": "England", "date": "2026-06-26", "time": "13:00" },
-        { "matchday": 3, "home": "Croatia", "away": "Ghana", "date": "2026-06-26", "time": "19:00" }
+        { "matchday": 1, "home": "England", "away": "Croatia", "date": "2026-06-17", "time": "17:00" },
+        { "matchday": 1, "home": "Ghana", "away": "Panama", "date": "2026-06-17", "time": "20:00" },
+        { "matchday": 2, "home": "England", "away": "Ghana", "date": "2026-06-23", "time": "17:00" },
+        { "matchday": 2, "home": "Panama", "away": "Croatia", "date": "2026-06-23", "time": "20:00" },
+        { "matchday": 3, "home": "Panama", "away": "England", "date": "2026-06-27", "time": "18:00" },
+        { "matchday": 3, "home": "Croatia", "away": "Ghana", "date": "2026-06-27", "time": "18:00" }
       ]
     }
   ],
   "knockout": [
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 32", "home": null, "away": null },
-    { "round": "Round of 16", "home": null, "away": null },
-    { "round": "Round of 16", "home": null, "away": null },
-    { "round": "Round of 16", "home": null, "away": null },
-    { "round": "Round of 16", "home": null, "away": null },
-    { "round": "Round of 16", "home": null, "away": null },
-    { "round": "Round of 16", "home": null, "away": null },
-    { "round": "Round of 16", "home": null, "away": null },
-    { "round": "Round of 16", "home": null, "away": null },
-    { "round": "Quarter-finals", "home": null, "away": null },
-    { "round": "Quarter-finals", "home": null, "away": null },
-    { "round": "Quarter-finals", "home": null, "away": null },
-    { "round": "Quarter-finals", "home": null, "away": null },
-    { "round": "Semi-finals", "home": null, "away": null },
-    { "round": "Semi-finals", "home": null, "away": null },
-    { "round": "Third place", "home": null, "away": null },
-    { "round": "Final", "home": null, "away": null }
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-06-28", "time": "16:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-06-29", "time": "16:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-06-29", "time": "17:30" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-06-29", "time": "22:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-06-30", "time": "14:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-06-30", "time": "18:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-06-30", "time": "22:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-07-01", "time": "13:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-07-01", "time": "17:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-07-01", "time": "21:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-07-02", "time": "16:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-07-02", "time": "20:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-07-02", "time": "23:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-07-03", "time": "15:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-07-03", "time": "19:00" },
+    { "round": "Round of 32", "home": null, "away": null, "date": "2026-07-03", "time": "22:30" },
+    { "round": "Round of 16", "home": null, "away": null, "date": "2026-07-04", "time": "14:00" },
+    { "round": "Round of 16", "home": null, "away": null, "date": "2026-07-04", "time": "18:00" },
+    { "round": "Round of 16", "home": null, "away": null, "date": "2026-07-05", "time": "17:00" },
+    { "round": "Round of 16", "home": null, "away": null, "date": "2026-07-05", "time": "21:00" },
+    { "round": "Round of 16", "home": null, "away": null, "date": "2026-07-06", "time": "16:00" },
+    { "round": "Round of 16", "home": null, "away": null, "date": "2026-07-06", "time": "21:00" },
+    { "round": "Round of 16", "home": null, "away": null, "date": "2026-07-07", "time": "13:00" },
+    { "round": "Round of 16", "home": null, "away": null, "date": "2026-07-07", "time": "17:00" },
+    { "round": "Quarter-finals", "home": null, "away": null, "date": "2026-07-09", "time": "17:00" },
+    { "round": "Quarter-finals", "home": null, "away": null, "date": "2026-07-10", "time": "16:00" },
+    { "round": "Quarter-finals", "home": null, "away": null, "date": "2026-07-11", "time": "18:00" },
+    { "round": "Quarter-finals", "home": null, "away": null, "date": "2026-07-11", "time": "22:00" },
+    { "round": "Semi-finals", "home": null, "away": null, "date": "2026-07-14", "time": "16:00" },
+    { "round": "Semi-finals", "home": null, "away": null, "date": "2026-07-15", "time": "16:00" },
+    { "round": "Third place", "home": null, "away": null, "date": "2026-07-18", "time": "18:00" },
+    { "round": "Final", "home": null, "away": null, "date": "2026-07-19", "time": "16:00" }
   ]
 }

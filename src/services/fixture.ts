@@ -36,8 +36,9 @@ export async function getMatchesByDate(date: string) {
 
 export async function getUpcomingMatches(limit = 10) {
   const supabase = await createServerSupabaseClient()
-  const today = new Date().toISOString().split('T')[0]
-  const now = new Date().toTimeString().slice(0, 5)
+  const tz = 'America/Argentina/Buenos_Aires'
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: tz })
+  const now = new Date().toLocaleTimeString('es-AR', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false })
 
   const { data } = await supabase
     .from('matches')

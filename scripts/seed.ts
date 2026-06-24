@@ -123,22 +123,41 @@ async function updateExistingMatches(supabase: any, fixture: any) {
       continue
     }
 
+    const { data: teams } = await supabase
+      .from('teams')
+      .select('id, name')
+      .eq('group_id', groupData.id)
+
+    const teamMap = new Map((teams ?? []).map((t: { id: string; name: string }) => [t.name, t.id]))
+
     const { data: dbMatches } = await supabase
       .from('matches')
-      .select('id, matchday')
+      .select('id, home_team_id, away_team_id')
       .eq('group_id', groupData.id)
       .eq('knockout', false)
-      .order('matchday', { ascending: true })
 
-    const typedMatches = (dbMatches ?? []) as { id: string; matchday: number | null }[]
+    const typedMatches = (dbMatches ?? []) as { id: string; home_team_id: string | null; away_team_id: string | null }[]
     if (typedMatches.length === 0) {
       console.error(`No matches found for group ${group.name}`)
       continue
     }
 
-    for (let i = 0; i < Math.min(group.matches.length, typedMatches.length); i++) {
-      const fixtureMatch = group.matches[i]
-      const dbMatch = typedMatches[i]
+    for (const fixtureMatch of group.matches) {
+      const homeId = teamMap.get(fixtureMatch.home)
+      const awayId = teamMap.get(fixtureMatch.away)
+      if (!homeId || !awayId) {
+        console.error(`Team not found for match ${fixtureMatch.home} vs ${fixtureMatch.away} in group ${group.name}`)
+        continue
+      }
+
+      const dbMatch = typedMatches.find(
+        (m) => m.home_team_id === homeId && m.away_team_id === awayId
+      )
+      if (!dbMatch) {
+        console.error(`Match not found in DB: ${fixtureMatch.home} vs ${fixtureMatch.away} in group ${group.name}`)
+        continue
+      }
+
       const { error } = await supabase
         .from('matches')
         .update({

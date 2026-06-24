@@ -12,11 +12,10 @@ import { getMatchesByDate } from '@/services/fixture'
 export default async function TotemHome() {
   const url = process.env.NEXT_PUBLIC_APP_URL ?? 'http://192.168.0.127:3000/mobile'
 
-  const today = new Date()
-  const todayStr = today.toISOString().split('T')[0]
-  const tomorrow = new Date(today)
-  tomorrow.setDate(tomorrow.getDate() + 1)
-  const tomorrowStr = tomorrow.toISOString().split('T')[0]
+  const tz = 'America/Argentina/Buenos_Aires'
+  const todayStr = new Date().toLocaleDateString('en-CA', { timeZone: tz })
+  const tomorrow = new Date(Date.now() + 86400000)
+  const tomorrowStr = tomorrow.toLocaleDateString('en-CA', { timeZone: tz })
 
   const [hoy, manana] = await Promise.all([
     getMatchesByDate(todayStr),

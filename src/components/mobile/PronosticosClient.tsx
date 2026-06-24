@@ -38,10 +38,10 @@ function ProximosList({ matches, userId, predictions }: {
   userId: string
   predictions: Map<string, { home_score: number; away_score: number }>
 }) {
-  const today = new Date().toISOString().split('T')[0]
-  const tomorrow = new Date()
-  tomorrow.setDate(tomorrow.getDate() + 1)
-  const tomorrowStr = tomorrow.toISOString().split('T')[0]
+  const tz = 'America/Argentina/Buenos_Aires'
+  const today = new Date().toLocaleDateString('en-CA', { timeZone: tz })
+  const tomorrow = new Date(Date.now() + 86400000)
+  const tomorrowStr = tomorrow.toLocaleDateString('en-CA', { timeZone: tz })
 
   const hoy = matches.filter((m) => m.match_date === today)
   const manana = matches.filter((m) => m.match_date === tomorrowStr)
@@ -136,8 +136,9 @@ export function PronosticosClient({ userId }: { userId: string }) {
 
   const filteredMatches = (() => {
     if (selectedTab === 'proximos') {
-      const today = new Date().toISOString().split('T')[0]
-      const now = new Date().toTimeString().slice(0, 5)
+      const tz = 'America/Argentina/Buenos_Aires'
+      const today = new Date().toLocaleDateString('en-CA', { timeZone: tz })
+      const now = new Date().toLocaleTimeString('es-AR', { timeZone: tz, hour: '2-digit', minute: '2-digit', hour12: false })
       return matches
         .filter((m) => {
           if (m.status !== 'scheduled' || !m.match_date) return false

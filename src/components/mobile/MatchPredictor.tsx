@@ -2,7 +2,7 @@
 
 import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
-import { createClient } from '@/lib/supabase/client'
+import { submitPrediction } from '@/services/predictions'
 import { Flag } from '@/components/ui/Flag'
 import { isMatchLocked } from '@/lib/utils/match-time'
 
@@ -128,19 +128,15 @@ export function MatchPredictor({ match, userId, initialPrediction }: MatchPredic
 
   const handleSave = async () => {
     setSaving(true)
-    const supabase = createClient()
-    await supabase.from('predictions').upsert(
-      {
-        user_id: userId,
-        match_id: match.id,
-        home_score: homeScore,
-        away_score: awayScore,
-      },
-      { onConflict: 'user_id,match_id' }
-    )
-    setSaving(false)
-    setSaved(true)
-    setTimeout(() => setSaved(false), 2000)
+    try {
+      await submitPrediction(userId, match.id, homeScore, awayScore)
+      setSaved(true)
+      setTimeout(() => setSaved(false), 2000)
+    } catch (err) {
+      alert(err instanceof Error ? err.message : 'Error al guardar el pronóstico')
+    } finally {
+      setSaving(false)
+    }
   }
 
   function formatDateLabel(date: string | null, time: string | null) {

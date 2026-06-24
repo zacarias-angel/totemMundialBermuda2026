@@ -34,7 +34,7 @@ export async function submitPrediction(
   if (existing) {
     return supabase
       .from('predictions')
-      .update({ home_score: homeScore, away_score: awayScore })
+      .update({ home_score: homeScore, away_score: awayScore, points: null })
       .eq('id', existing.id)
   }
 
@@ -73,5 +73,20 @@ export async function recalculatePointsForMatch(matchId: string) {
     )
 
     await supabase.from('predictions').update({ points }).eq('id', pred.id)
+  }
+}
+
+export async function recalculateAllPoints() {
+  const supabase = createClient()
+
+  const { data: finishedMatches } = await supabase
+    .from('matches')
+    .select('id')
+    .eq('status', 'finished')
+
+  if (!finishedMatches || finishedMatches.length === 0) return
+
+  for (const match of finishedMatches) {
+    await recalculatePointsForMatch(match.id)
   }
 }
