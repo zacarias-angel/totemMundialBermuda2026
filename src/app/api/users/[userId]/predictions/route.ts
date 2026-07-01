@@ -42,13 +42,19 @@ export async function GET(
   }
 
   const matchIds = allPreds.map((p) => p.match_id)
-  const { data: matches } = await supabase
-    .from('matches')
-    .select('id, round, home_score, away_score, status, home_team_id, away_team_id')
-    .in('id', matchIds)
+  const BATCH = 50
+  let matchesList: any[] = []
+  for (let i = 0; i < matchIds.length; i += BATCH) {
+    const batch = matchIds.slice(i, i + BATCH)
+    const { data } = await supabase
+      .from('matches')
+      .select('id, round, home_score, away_score, status, home_team_id, away_team_id')
+      .in('id', batch)
+    if (data) matchesList = matchesList.concat(data)
+  }
 
   const teamIds = new Set<string>()
-  matches?.forEach((m) => {
+  matchesList.forEach((m: any) => {
     if (m.home_team_id) teamIds.add(m.home_team_id)
     if (m.away_team_id) teamIds.add(m.away_team_id)
   })
@@ -59,7 +65,7 @@ export async function GET(
     .in('id', [...teamIds])
 
   const teamMap = new Map(teams?.map((t) => [t.id, t.name]) ?? [])
-  const matchMap = new Map(matches?.map((m) => [m.id, m]) ?? [])
+  const matchMap = new Map(matchesList.map((m) => [m.id, m]) ?? [])
 
   const result = allPreds.map((p) => {
     const match = matchMap.get(p.match_id)

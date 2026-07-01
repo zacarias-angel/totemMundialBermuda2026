@@ -9,11 +9,25 @@ export default async function MisPronosticosPage() {
 
   const supabase = await createServerSupabaseClient()
 
-  const { data: raw } = await supabase
-    .from('predictions')
-    .select('home_score, away_score, points, match_id')
-    .eq('user_id', user.id)
-    .order('match_id')
+  const PAGE = 1000
+  let allPreds: any[] = []
+  let from = 0
+
+  while (true) {
+    const { data } = await supabase
+      .from('predictions')
+      .select('home_score, away_score, points, match_id')
+      .eq('user_id', user.id)
+      .order('match_id')
+      .range(from, from + PAGE - 1)
+
+    if (!data || data.length === 0) break
+    allPreds = allPreds.concat(data)
+    if (data.length < PAGE) break
+    from += PAGE
+  }
+
+  const raw = allPreds
 
   if (!raw || raw.length === 0) {
     return (
@@ -26,13 +40,19 @@ export default async function MisPronosticosPage() {
   }
 
   const matchIds = raw.map((p) => p.match_id)
-  const { data: dbMatches } = await supabase
-    .from('matches')
-    .select('id, round, home_score, away_score, matchday, status, knockout, home_team_id, away_team_id')
-    .in('id', matchIds)
+  const BATCH = 50
+  let dbMatchesList: any[] = []
+  for (let i = 0; i < matchIds.length; i += BATCH) {
+    const batch = matchIds.slice(i, i + BATCH)
+    const { data } = await supabase
+      .from('matches')
+      .select('id, round, home_score, away_score, matchday, status, knockout, home_team_id, away_team_id')
+      .in('id', batch)
+    if (data) dbMatchesList = dbMatchesList.concat(data)
+  }
 
   const teamIds = new Set<string>()
-  dbMatches?.forEach((m) => {
+  dbMatchesList.forEach((m: any) => {
     if (m.home_team_id) teamIds.add(m.home_team_id)
     if (m.away_team_id) teamIds.add(m.away_team_id)
   })
@@ -46,7 +66,7 @@ export default async function MisPronosticosPage() {
 
   type FlatMatch = { id: string; round: string; home_score: number | null; away_score: number | null; matchday: number | null; status: string; knockout: boolean; home_team: { name: string } | null; away_team: { name: string } | null }
 
-  const flatMatches: FlatMatch[] = (dbMatches ?? []).map((m) => ({
+  const flatMatches: FlatMatch[] = dbMatchesList.map((m: any) => ({
     ...m,
     home_team: m.home_team_id ? { name: teamMap.get(m.home_team_id) ?? '?' } : null,
     away_team: m.away_team_id ? { name: teamMap.get(m.away_team_id) ?? '?' } : null,
@@ -58,7 +78,7 @@ export default async function MisPronosticosPage() {
   const predictions: PredictionRow[] = raw.map((p) => ({
     ...p,
     match: matchMap.get(p.match_id) as FlatMatch,
-  })).filter((p) => p.match)
+  })).filter((p) => p.match != null)
 
   const grouped = predictions.reduce<Record<string, PredictionRow[]>>((acc, p) => {
     const round = p.match?.round ?? 'Otros'
