@@ -95,7 +95,7 @@ export function PronosticosClient({ userId }: { userId: string }) {
 
       const [groupRes, matchRes, predRes] = await Promise.all([
         supabase.from('groups').select('id, name'),
-        supabase.from('matches').select('*'),
+        supabase.from('matches').select('*').limit(200),
         supabase.from('predictions').select('match_id, home_score, away_score').eq('user_id', userId),
       ])
 

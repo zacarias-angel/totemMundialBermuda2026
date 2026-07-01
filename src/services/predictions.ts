@@ -1,6 +1,6 @@
 import { createClient } from '@/lib/supabase/client'
 import { calculatePoints } from '@/lib/utils/scoring'
-import { isMatchLocked } from '@/lib/utils/match-time'
+import { isMatchLocked, isMatchPast } from '@/lib/utils/match-time'
 
 export async function submitPrediction(
   userId: string,
@@ -22,6 +22,10 @@ export async function submitPrediction(
 
   if (isMatchLocked(match.match_date, match.match_time)) {
     throw new Error('No se puede pronosticar un partido que comienza en menos de una hora')
+  }
+
+  if (isMatchPast(match.match_date, match.match_time)) {
+    throw new Error('No se puede pronosticar un partido que ya se jugó')
   }
 
   const { data: existing } = await supabase

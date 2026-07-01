@@ -4,7 +4,7 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { submitPrediction } from '@/services/predictions'
 import { Flag } from '@/components/ui/Flag'
-import { isMatchLocked } from '@/lib/utils/match-time'
+import { isMatchLocked, isMatchPast } from '@/lib/utils/match-time'
 
 interface Match {
   id: string
@@ -96,6 +96,36 @@ export function MatchPredictor({ match, userId, initialPrediction }: MatchPredic
   }
 
   const locked = isMatchLocked(match.match_date, match.match_time)
+  const past = isMatchPast(match.match_date, match.match_time)
+
+  if (past) {
+    return (
+      <div className="rounded-2xl bg-white/10 border border-white/20 p-4 opacity-60">
+        {(match.match_date || match.match_time) && (
+          <div className="text-xs text-gray-500 text-center mb-3">
+            {formatDateLabel(match.match_date, match.match_time)}
+          </div>
+        )}
+        <div className="flex items-center justify-between gap-3 mb-3">
+          <div className="flex items-center justify-end gap-1.5 flex-1 truncate">
+            <span className="font-semibold text-lg truncate">{match.home_team?.name}</span>
+            <Flag name={match.home_team?.name} className="text-xl shrink-0" />
+          </div>
+          <span className="text-gray-500 font-bold">vs</span>
+          <div className="flex items-center gap-1.5 flex-1 truncate">
+            <Flag name={match.away_team?.name} className="text-xl shrink-0" />
+            <span className="font-semibold text-lg truncate">{match.away_team?.name}</span>
+          </div>
+        </div>
+        {initialPrediction && (
+          <p className="text-xs text-gray-400 text-center mb-2">
+            Tu pronóstico: {initialPrediction.home_score} - {initialPrediction.away_score}
+          </p>
+        )}
+        <p className="text-xs text-red-400 text-center">El partido ya se jugó</p>
+      </div>
+    )
+  }
 
   if (locked) {
     return (

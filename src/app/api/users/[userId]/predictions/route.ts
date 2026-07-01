@@ -19,17 +19,29 @@ export async function GET(
     }
   )
 
-  const { data: predictions } = await supabase
-    .from('predictions')
-    .select('home_score, away_score, points, match_id')
-    .eq('user_id', userId)
-    .order('match_id')
+  const PAGE = 1000
+  let allPreds: { home_score: number; away_score: number; points: number | null; match_id: string }[] = []
+  let from = 0
 
-  if (!predictions || predictions.length === 0) {
+  while (true) {
+    const { data: predictions } = await supabase
+      .from('predictions')
+      .select('home_score, away_score, points, match_id')
+      .eq('user_id', userId)
+      .order('match_id')
+      .range(from, from + PAGE - 1)
+
+    if (!predictions || predictions.length === 0) break
+    allPreds = allPreds.concat(predictions)
+    if (predictions.length < PAGE) break
+    from += PAGE
+  }
+
+  if (allPreds.length === 0) {
     return NextResponse.json([])
   }
 
-  const matchIds = predictions.map((p) => p.match_id)
+  const matchIds = allPreds.map((p) => p.match_id)
   const { data: matches } = await supabase
     .from('matches')
     .select('id, round, home_score, away_score, status, home_team_id, away_team_id')
@@ -49,7 +61,7 @@ export async function GET(
   const teamMap = new Map(teams?.map((t) => [t.id, t.name]) ?? [])
   const matchMap = new Map(matches?.map((m) => [m.id, m]) ?? [])
 
-  const result = predictions.map((p) => {
+  const result = allPreds.map((p) => {
     const match = matchMap.get(p.match_id)
     return {
       home_team: match?.home_team_id ? (teamMap.get(match.home_team_id) ?? '?') : '?',

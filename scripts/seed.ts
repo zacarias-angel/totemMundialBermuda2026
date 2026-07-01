@@ -1,4 +1,4 @@
-import { createClient } from '@supabase/supabase-js'
+import { createClient, type SupabaseClient } from '@supabase/supabase-js'
 import * as fs from 'fs'
 import * as path from 'path'
 
@@ -115,7 +115,15 @@ async function seed() {
   console.log('Seed complete!')
 }
 
-async function updateExistingMatches(supabase: any, fixture: any) {
+interface KnockoutEntry {
+  round: string
+  home: string | null
+  away: string | null
+  date: string | null
+  time: string | null
+}
+
+async function updateExistingMatches(supabase: SupabaseClient, fixture: { groups: any[]; knockout: KnockoutEntry[] }) {
   for (const group of fixture.groups) {
     const { data: groupData } = await supabase.from('groups').select('id').eq('name', group.name).single()
     if (!groupData) {
