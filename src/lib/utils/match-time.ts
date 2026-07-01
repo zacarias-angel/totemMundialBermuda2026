@@ -1,4 +1,4 @@
-const LOCK_MINUTES = 60
+const LOCK_MINUTES = 5
 
 export function isMatchLocked(matchDate: string | null, matchTime: string | null): boolean {
   if (!matchDate || !matchTime) return false
