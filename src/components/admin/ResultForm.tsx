@@ -34,7 +34,7 @@ export function ResultForm({ match }: ResultFormProps) {
       .eq('id', match.id)
 
     if (status === 'finished') {
-      await recalculatePointsForMatch(match.id)
+      await recalculatePointsForMatch(match.id, homeScore, awayScore)
     }
 
     setSaving(false)

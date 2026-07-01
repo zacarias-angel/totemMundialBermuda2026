@@ -172,31 +172,63 @@ async function updateExistingMatches(supabase: any, fixture: any) {
     console.log(`✓ Group ${group.name}: dates updated`)
   }
 
-  // Update knockout matches
+  // Update knockout matches - group by round, order by created_at (not UUID!)
+  const { data: allTeams } = await supabase.from('teams').select('id, name')
+  const teamNameMap = new Map((allTeams ?? []).map((t: { id: string; name: string }) => [t.name, t.id]))
+
   const { data: knockMatches } = await supabase
     .from('matches')
     .select('id, round')
     .eq('knockout', true)
-    .order('id', { ascending: true })
+    .order('created_at', { ascending: true })
 
-  const typedKnock = (knockMatches ?? []) as { id: string; round: string }[]
-  if (typedKnock.length > 0) {
-    for (let i = 0; i < Math.min(fixture.knockout.length, typedKnock.length); i++) {
-      const fm = fixture.knockout[i]
-      const km = typedKnock[i]
+  const dbMatches = (knockMatches ?? []) as { id: string; round: string }[]
+
+  const dbByRound: Record<string, { id: string }[]> = {}
+  for (const km of dbMatches) {
+    if (!dbByRound[km.round]) dbByRound[km.round] = []
+    dbByRound[km.round].push(km)
+  }
+
+  const fixtureByRound: Record<string, typeof fixture.knockout> = {}
+  for (const fm of fixture.knockout) {
+    if (!fixtureByRound[fm.round]) fixtureByRound[fm.round] = []
+    fixtureByRound[fm.round].push(fm)
+  }
+
+  let updated = 0
+  for (const [round, fixtureMatches] of Object.entries(fixtureByRound)) {
+    const roundDbMatches = dbByRound[round]
+    if (!roundDbMatches) {
+      console.error(`  ! Round "${round}" not found in DB`)
+      continue
+    }
+
+    for (let i = 0; i < Math.min(fixtureMatches.length, roundDbMatches.length); i++) {
+      const fm = fixtureMatches[i]
+      const km = roundDbMatches[i]
+
+      const updateData: Record<string, unknown> = {
+        match_date: fm.date ?? null,
+        match_time: fm.time ?? null,
+      }
+
+      if (fm.home && fm.away) {
+        updateData.home_team_id = teamNameMap.get(fm.home) ?? null
+        updateData.away_team_id = teamNameMap.get(fm.away) ?? null
+      }
+
       const { error } = await supabase
         .from('matches')
-        .update({
-          match_date: fm.date ?? null,
-          match_time: fm.time ?? null,
-        })
+        .update(updateData)
         .eq('id', km.id)
 
-      if (error) console.error(`Error updating knockout match:`, error)
+      if (error) console.error(`  ! Error updating ${round}:`, error)
+      else updated++
     }
   }
 
-  console.log(`✓ ${fixture.knockout.length} knockout dates updated`)
+  console.log(`✓ ${updated} knockout matches updated (dates & teams)`)
   console.log('Seed complete! (predictions preserved)')
 }
 

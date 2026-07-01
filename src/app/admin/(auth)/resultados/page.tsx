@@ -6,8 +6,9 @@ export default async function AdminResultados() {
   const { data: matches } = await supabase
     .from('matches')
     .select('*, home_team:teams!home_team_id(name), away_team:teams!away_team_id(name)')
-    .order('round')
-    .order('matchday', { ascending: true, nullsFirst: false })
+    .order('match_date', { ascending: true, nullsFirst: true })
+    .order('match_time', { ascending: true, nullsFirst: true })
+    .limit(200)
 
   return (
     <div>

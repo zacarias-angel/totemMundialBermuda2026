@@ -46,30 +46,47 @@ export async function submitPrediction(
   })
 }
 
-export async function recalculatePointsForMatch(matchId: string) {
+export async function recalculatePointsForMatch(matchId: string, actualHome?: number, actualAway?: number) {
   const supabase = createClient()
 
-  const { data: match } = await supabase
-    .from('matches')
-    .select('home_score, away_score')
-    .eq('id', matchId)
-    .single()
+  let homeScore = actualHome
+  let awayScore = actualAway
 
-  if (!match || match.home_score == null || match.away_score == null) return
+  if (homeScore == null || awayScore == null) {
+    const { data: match } = await supabase
+      .from('matches')
+      .select('home_score, away_score')
+      .eq('id', matchId)
+      .single()
 
-  const { data: predictions } = await supabase
-    .from('predictions')
-    .select('id, home_score, away_score')
-    .eq('match_id', matchId)
+    if (!match || match.home_score == null || match.away_score == null) return
+    homeScore = match.home_score
+    awayScore = match.away_score
+  }
 
-  if (!predictions) return
+  const PAGE = 1000
+  let allPreds: { id: string; home_score: number; away_score: number }[] = []
+  let from = 0
 
-  for (const pred of predictions) {
+  while (true) {
+    const { data, error } = await supabase
+      .from('predictions')
+      .select('id, home_score, away_score')
+      .eq('match_id', matchId)
+      .range(from, from + PAGE - 1)
+
+    if (error || !data || data.length === 0) break
+    allPreds = allPreds.concat(data)
+    if (data.length < PAGE) break
+    from += PAGE
+  }
+
+  for (const pred of allPreds) {
     const points = calculatePoints(
       pred.home_score,
       pred.away_score,
-      match.home_score,
-      match.away_score
+      homeScore,
+      awayScore
     )
 
     await supabase.from('predictions').update({ points }).eq('id', pred.id)
