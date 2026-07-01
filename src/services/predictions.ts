@@ -64,6 +64,8 @@ export async function recalculatePointsForMatch(matchId: string, actualHome?: nu
     awayScore = match.away_score
   }
 
+  if (homeScore == null || awayScore == null) return
+
   const PAGE = 1000
   let allPreds: { id: string; home_score: number; away_score: number }[] = []
   let from = 0
