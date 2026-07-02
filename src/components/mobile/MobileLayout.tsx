@@ -88,7 +88,7 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
                 <div className="flex-1 min-w-0">
                   <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-1">Fe de Erratas</p>
                   <p className="text-amber-200/80 text-sm leading-snug">
-                    Por un error en las fechas de estos partidos se le da por acertados. <strong className="text-amber-100">Silvia ya no puede reclamar más nada.</strong>
+                    Por un error en las fechas de estos partidos se le da por acertados. <strong className="text-amber-100">Silvia agotó sus tickets de reclamos.</strong>
                   </p>
                 </div>
                 <button
