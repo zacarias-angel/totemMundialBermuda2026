@@ -8,21 +8,15 @@ export function FeDeErratas() {
   if (!visible) return null
 
   return (
-    <section className="animate-rise mb-5 rounded-2xl border border-amber-500/30 bg-amber-500/[0.06] p-4" style={{ animationDelay: '30ms' }}>
-      <div className="flex items-start gap-3">
-        <span className="text-2xl shrink-0 mt-0.5">📢</span>
-        <div className="flex-1 min-w-0">
-          <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em] mb-1">
-            Fe de Erratas
-          </p>
-          <p className="text-amber-200/80 text-sm leading-snug">
-            Por un error en las fechas de estos partidos se le da por acertados.{' '}
-            <strong className="text-amber-100">Silvia ya no puede reclamar más nada.</strong>
-          </p>
-        </div>
+    <section className="animate-rise mb-5 rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-3" style={{ animationDelay: '50ms' }}>
+      <div className="flex items-center gap-3">
+        <span className="text-lg shrink-0">📢</span>
+        <p className="flex-1 text-amber-200 text-xs sm:text-sm leading-relaxed">
+          <strong className="text-amber-100">Fe de erratas:</strong> por un error técnico, los partidos de Costa de Marfil, México e Inglaterra se dan por acertados. <em className="text-amber-300/70">Silvia, no podés reclamar.</em>
+        </p>
         <button
           onClick={() => setVisible(false)}
-          className="text-amber-400/60 hover:text-amber-300 text-lg shrink-0 leading-none mt-1"
+          className="text-amber-400/60 hover:text-amber-300 text-base shrink-0 px-1"
         >
           ×
         </button>
