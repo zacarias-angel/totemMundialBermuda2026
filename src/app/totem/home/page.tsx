@@ -9,6 +9,7 @@ import { HoyManana } from '@/components/totem/HoyManana'
 import { RankingSkeleton, MatchesSkeleton } from '@/components/totem/Skeletons'
 import { getMatchesByDate } from '@/services/fixture'
 import { FotoCarousel } from '@/components/totem/FotoCarousel'
+import { FeDeErratas } from '@/components/totem/FeDeErratas'
 
 export default async function TotemHome() {
   const url = process.env.NEXT_PUBLIC_APP_URL ?? 'http://192.168.0.127:3000/mobile'
@@ -57,6 +58,9 @@ export default async function TotemHome() {
             <QRCode url={url} size={96} />
           </div>
         </section>
+
+        {/* Fe de Erratas */}
+        <FeDeErratas />
 
         {/* Foto Carousel */}
         <Suspense>
