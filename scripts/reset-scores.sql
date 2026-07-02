@@ -37,6 +37,37 @@ WHERE match_id IN (
   '1d20b7f8-3609-46c5-83a1-53f47846afdf'
 );
 
+-- ============================================================
+-- FE DE ERRATAS: 3 pts para todos, 1 pt solo para estos dos
+-- ============================================================
+
+-- Ivory Coast 2-1 Norway
+UPDATE predictions SET points = 3
+WHERE match_id = '8fd96e4a-8bd6-4730-93a6-12d52f1a6170'
+AND user_id NOT IN ('2240df1b-9884-4327-9bc7-5831a2571470', '051eb3b7-4984-4cd3-8629-d85c9a16af62');
+
+UPDATE predictions SET points = 1
+WHERE match_id = '8fd96e4a-8bd6-4730-93a6-12d52f1a6170'
+AND user_id IN ('2240df1b-9884-4327-9bc7-5831a2571470', '051eb3b7-4984-4cd3-8629-d85c9a16af62');
+
+-- Mexico 2-0 Ecuador
+UPDATE predictions SET points = 3
+WHERE match_id = 'e58d19e4-a57f-4c3c-8ede-3bfdd947256e'
+AND user_id NOT IN ('2240df1b-9884-4327-9bc7-5831a2571470', '051eb3b7-4984-4cd3-8629-d85c9a16af62');
+
+UPDATE predictions SET points = 1
+WHERE match_id = 'e58d19e4-a57f-4c3c-8ede-3bfdd947256e'
+AND user_id IN ('2240df1b-9884-4327-9bc7-5831a2571470', '051eb3b7-4984-4cd3-8629-d85c9a16af62');
+
+-- England 2-1 DR Congo
+UPDATE predictions SET points = 3
+WHERE match_id = 'd189aaa2-67cc-4b4b-a711-93f0bd84650f'
+AND user_id NOT IN ('2240df1b-9884-4327-9bc7-5831a2571470', '051eb3b7-4984-4cd3-8629-d85c9a16af62');
+
+UPDATE predictions SET points = 1
+WHERE match_id = 'd189aaa2-67cc-4b4b-a711-93f0bd84650f'
+AND user_id IN ('2240df1b-9884-4327-9bc7-5831a2571470', '051eb3b7-4984-4cd3-8629-d85c9a16af62');
+
 -- 5) Verificar resultado final
 SELECT match_date, match_time, round,
        (SELECT name FROM teams WHERE id = home_team_id) AS local,

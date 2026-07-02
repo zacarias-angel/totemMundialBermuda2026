@@ -18,6 +18,7 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter()
   const [user, setUser] = useState<{ id: string; name: string; email: string } | null>(null)
   const [fromTotem, setFromTotem] = useState(false)
+  const [showFeDeErratas, setShowFeDeErratas] = useState(false)
 
   useEffect(() => {
     const stored = localStorage.getItem('prode_user')
@@ -34,6 +35,8 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
     } else if (sessionStorage.getItem('fromTotem') === 'true') {
       setFromTotem(true)
     }
+
+    setShowFeDeErratas(true)
   }, [])
 
   const handleLogout = () => {
@@ -77,6 +80,26 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
               </div>
             )}
           </header>
+
+          {showFeDeErratas && (
+            <div className="bg-amber-500/10 border-b border-amber-500/30 px-4 py-3">
+              <div className="flex items-start gap-3">
+                <span className="text-lg shrink-0 mt-0.5">📢</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-1">Fe de Erratas</p>
+                  <p className="text-amber-200/80 text-sm leading-snug">
+                    Por un error en las fechas de estos partidos se le da por acertados. <strong className="text-amber-100">Silvia ya no puede reclamar más nada.</strong>
+                  </p>
+                </div>
+                <button
+                  onClick={() => setShowFeDeErratas(false)}
+                  className="text-amber-400/60 hover:text-amber-300 text-lg shrink-0 leading-none"
+                >
+                  ×
+                </button>
+              </div>
+            </div>
+          )}
 
           <main className="flex-1 px-4 pb-24 pt-4">{children}</main>
 

@@ -8,6 +8,7 @@ import { QRCode } from '@/components/ui/QRCode'
 import { HoyManana } from '@/components/totem/HoyManana'
 import { RankingSkeleton, MatchesSkeleton } from '@/components/totem/Skeletons'
 import { getMatchesByDate } from '@/services/fixture'
+import { FotoCarousel } from '@/components/totem/FotoCarousel'
 
 export default async function TotemHome() {
   const url = process.env.NEXT_PUBLIC_APP_URL ?? 'http://192.168.0.127:3000/mobile'
@@ -57,8 +58,13 @@ export default async function TotemHome() {
           </div>
         </section>
 
+        {/* Foto Carousel */}
+        <Suspense>
+          <FotoCarousel />
+        </Suspense>
+
         {/* Ranking */}
-        <section className="mb-7">
+        <section className="mt-6 mb-7">
           <Suspense fallback={<RankingSkeleton />}>
             <RankingTable />
           </Suspense>
