@@ -12,7 +12,7 @@ export function FeDeErratas() {
       <div className="flex items-center gap-3">
         <span className="text-lg shrink-0">📢</span>
         <p className="flex-1 text-amber-200 text-xs sm:text-sm leading-relaxed">
-          <strong className="text-amber-100">Fe de erratas:</strong> por un error técnico, los partidos de Costa de Marfil, México e Inglaterra se dan por acertados. <em className="text-amber-300/70">Silvia agotó sus tickets de reclamos.</em>
+          <strong className="text-amber-100">Fe de erratas:</strong> Debido a que Angel se durmió y no cargó los octavos, Canadá vs. Marruecos se da por acertado.
         </p>
         <button
           onClick={() => setVisible(false)}

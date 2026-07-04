@@ -83,13 +83,14 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
 
           {showFeDeErratas && (
             <div className="bg-amber-500/10 border-b border-amber-500/30 px-4 py-3">
-              <div className="flex items-start gap-3">
-                <span className="text-lg shrink-0 mt-0.5">📢</span>
-                <div className="flex-1 min-w-0">
-                  <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-1">Fe de Erratas</p>
-                  <p className="text-amber-200/80 text-sm leading-snug">
-                    Por un error en las fechas de estos partidos se le da por acertados. <strong className="text-amber-100">Silvia agotó sus tickets de reclamos.</strong>
-                  </p>
+              <div className="flex items-center gap-3">
+                <span className="text-lg shrink-0">📢</span>
+                <div className="flex-1 min-w-0 overflow-hidden">
+                  <div className="marquee-container">
+                    <p className="text-amber-200/80 text-sm leading-snug whitespace-nowrap marquee-text">
+                      Fe de Erratas: Debido a que Angel se durmió y no cargó los octavos, Canadá vs. Marruecos se da por acertado.
+                    </p>
+                  </div>
                 </div>
                 <button
                   onClick={() => setShowFeDeErratas(false)}
@@ -98,6 +99,20 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
                   ×
                 </button>
               </div>
+              <style jsx>{`
+                .marquee-container {
+                  overflow: hidden;
+                  white-space: nowrap;
+                }
+                .marquee-text {
+                  display: inline-block;
+                  animation: marquee 12s linear infinite;
+                }
+                @keyframes marquee {
+                  0% { transform: translateX(100%); }
+                  100% { transform: translateX(-100%); }
+                }
+              `}</style>
             </div>
           )}
 

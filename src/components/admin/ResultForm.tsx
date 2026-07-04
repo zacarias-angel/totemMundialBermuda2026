@@ -4,12 +4,14 @@ import { useState } from 'react'
 import { Button } from '@/components/ui/Button'
 import { createClient } from '@/lib/supabase/client'
 import { recalculatePointsForMatch } from '@/services/predictions'
+import { propagateKnockoutWinner } from '@/services/knockout'
 import { Flag } from '@/components/ui/Flag'
 
 interface ResultFormProps {
   match: {
     id: string
     round: string
+    knockout: boolean
     home_team: { name: string } | null
     away_team: { name: string } | null
     home_score: number | null
@@ -35,6 +37,9 @@ export function ResultForm({ match }: ResultFormProps) {
 
     if (status === 'finished') {
       await recalculatePointsForMatch(match.id, homeScore, awayScore)
+      if (match.knockout) {
+        await propagateKnockoutWinner(match.id)
+      }
     }
 
     setSaving(false)
