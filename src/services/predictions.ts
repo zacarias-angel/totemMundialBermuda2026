@@ -36,7 +36,7 @@ export async function submitPrediction(
     .maybeSingle()
 
   if (existing) {
-    await supabase.from('predictions_history').insert({
+    const { error: historyError } = await supabase.from('predictions_history').insert({
       prediction_id: existing.id,
       user_id: userId,
       match_id: matchId,
@@ -48,6 +48,11 @@ export async function submitPrediction(
       new_points: null,
       update_number: existing.update_count + 1,
     })
+
+    if (historyError) {
+      console.error('Failed to insert predictions_history:', historyError)
+      throw new Error('Error al guardar el historial del pronóstico')
+    }
 
     return supabase
       .from('predictions')
