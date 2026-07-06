@@ -30,12 +30,25 @@ export async function submitPrediction(
 
   const { data: existing } = await supabase
     .from('predictions')
-    .select('id')
+    .select('id, home_score, away_score, points, update_count')
     .eq('user_id', userId)
     .eq('match_id', matchId)
     .maybeSingle()
 
   if (existing) {
+    await supabase.from('predictions_history').insert({
+      prediction_id: existing.id,
+      user_id: userId,
+      match_id: matchId,
+      old_home_score: existing.home_score,
+      old_away_score: existing.away_score,
+      old_points: existing.points,
+      new_home_score: homeScore,
+      new_away_score: awayScore,
+      new_points: null,
+      update_number: existing.update_count + 1,
+    })
+
     return supabase
       .from('predictions')
       .update({ home_score: homeScore, away_score: awayScore, points: null })
@@ -94,6 +107,25 @@ export async function recalculatePointsForMatch(matchId: string, actualHome?: nu
       homeScore,
       awayScore
     )
+
+    const { data: current } = await supabase
+      .from('predictions')
+      .select('user_id, home_score, away_score, points, update_count')
+      .eq('id', pred.id)
+      .maybeSingle()
+
+    await supabase.from('predictions_history').insert({
+      prediction_id: pred.id,
+      user_id: current?.user_id,
+      match_id: matchId,
+      old_home_score: current?.home_score ?? null,
+      old_away_score: current?.away_score ?? null,
+      old_points: current?.points ?? null,
+      new_home_score: current?.home_score ?? null,
+      new_away_score: current?.away_score ?? null,
+      new_points: points,
+      update_number: (current?.update_count ?? 0) + 1,
+    })
 
     await supabase.from('predictions').update({ points }).eq('id', pred.id)
   }

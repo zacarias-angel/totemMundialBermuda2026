@@ -2,6 +2,8 @@ export type Group = {
   id: string
   name: string
   created_at?: string
+  updated_at?: string
+  update_count?: number
 }
 
 export type Team = {
@@ -9,6 +11,8 @@ export type Team = {
   name: string
   group_id: string
   created_at?: string
+  updated_at?: string
+  update_count?: number
 }
 
 export type MatchStatus = 'scheduled' | 'live' | 'finished'
@@ -27,6 +31,8 @@ export type Match = {
   status: MatchStatus
   knockout: boolean
   created_at?: string
+  updated_at?: string
+  update_count?: number
 }
 
 export type User = {
@@ -34,6 +40,8 @@ export type User = {
   name: string
   email: string
   created_at?: string
+  updated_at?: string
+  update_count?: number
 }
 
 export type Prediction = {
@@ -44,6 +52,8 @@ export type Prediction = {
   away_score: number
   points?: number | null
   created_at?: string
+  updated_at?: string
+  update_count?: number
 }
 
 export type ViernesQuestion = {
@@ -51,6 +61,8 @@ export type ViernesQuestion = {
   question: string
   active: boolean
   created_at?: string
+  updated_at?: string
+  update_count?: number
 }
 
 export type ViernesAnswer = {
@@ -59,6 +71,23 @@ export type ViernesAnswer = {
   question_id: string
   answer: string
   created_at?: string
+  updated_at?: string
+  update_count?: number
+}
+
+export type PredictionsHistory = {
+  id: string
+  prediction_id: string
+  user_id: string
+  match_id: string
+  old_home_score: number | null
+  old_away_score: number | null
+  old_points: number | null
+  new_home_score: number | null
+  new_away_score: number | null
+  new_points: number | null
+  changed_at?: string
+  update_number: number
 }
 
 export type RankEntry = {
