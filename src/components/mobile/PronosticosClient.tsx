@@ -153,7 +153,7 @@ export function PronosticosClient({ userId }: { userId: string }) {
           return ta < tb ? -1 : 1
         })
     }
-    if (selectedTab === 'knockout') return matches.filter((m) => m.knockout)
+    if (selectedTab === 'knockout') return matches.filter((m) => m.knockout && m.status === 'scheduled')
     return matches.filter((m) => !m.knockout && m.group_id === selectedTab)
   })()
 

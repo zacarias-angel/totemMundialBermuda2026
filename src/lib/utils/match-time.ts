@@ -18,7 +18,6 @@ export function isMatchPast(matchDate: string | null, matchTime: string | null):
 function parseDateTime(date: string, time: string): Date | null {
   const [h, m] = time.split(':').map(Number)
   if (isNaN(h) || isNaN(m)) return null
-  const dt = new Date(date + 'T00:00:00')
-  dt.setHours(h, m, 0, 0)
-  return dt
+  const pad2 = (n: number) => String(n).padStart(2, '0')
+  return new Date(`${date}T${pad2(h)}:${pad2(m)}:00-03:00`)
 }

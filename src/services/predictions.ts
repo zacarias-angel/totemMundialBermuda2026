@@ -16,16 +16,20 @@ export async function submitPrediction(
     .eq('id', matchId)
     .single()
 
-  if (!match || match.status !== 'scheduled') {
-    throw new Error('No se puede pronosticar un partido que ya comenzó o finalizó')
-  }
-
-  if (isMatchLocked(match.match_date, match.match_time)) {
-    throw new Error('No se puede pronosticar un partido que comienza en menos de una hora')
+  if (!match) {
+    throw new Error('Partido no encontrado')
   }
 
   if (isMatchPast(match.match_date, match.match_time)) {
-    throw new Error('No se puede pronosticar un partido que ya se jugó')
+    throw new Error('No se puede pronosticar: el partido ya comenzó')
+  }
+
+  if (isMatchLocked(match.match_date, match.match_time)) {
+    throw new Error('No se puede pronosticar: el partido comienza en menos de 5 minutos')
+  }
+
+  if (match.status !== 'scheduled') {
+    throw new Error('No se puede pronosticar un partido que ya comenzó o finalizó')
   }
 
   const { data: existing } = await supabase
