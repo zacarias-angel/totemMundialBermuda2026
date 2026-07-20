@@ -31,7 +31,7 @@ export default async function TotemHome() {
             <span className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
             <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/55">Finalizado</span>
           </div>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Podio</h1>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Mundial 2026</h1>
         </header>
 
         {/* Join card */}

@@ -89,6 +89,7 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
                   <p className="text-yellow-200/80 text-sm leading-snug font-medium">
                     Felicidades a los ganadores
                   </p>
+                  <p className="text-yellow-200/40 text-xs leading-snug">TheBermuda</p>
                 </div>
                 <button
                   onClick={() => setShowFeDeErratas(false)}
