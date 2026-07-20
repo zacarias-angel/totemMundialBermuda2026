@@ -82,37 +82,21 @@ export function MobileLayout({ children }: { children: React.ReactNode }) {
           </header>
 
           {showFeDeErratas && (
-            <div className="bg-amber-500/10 border-b border-amber-500/30 px-4 py-3">
+            <div className="bg-yellow-400/10 border-b border-yellow-400/30 px-4 py-3">
               <div className="flex items-center gap-3">
-                <span className="text-lg shrink-0">📢</span>
-                <div className="flex-1 min-w-0 overflow-hidden">
-                  <div className="marquee-container">
-                    <p className="text-amber-200/80 text-sm leading-snug whitespace-nowrap marquee-text">
-                      Fe de Erratas: Debido a que Angel se durmió y no cargó los octavos, Canadá vs. Marruecos se da por acertado.
-                    </p>
-                  </div>
+                <span className="text-lg shrink-0">🏆</span>
+                <div className="flex-1 min-w-0">
+                  <p className="text-yellow-200/80 text-sm leading-snug font-medium">
+                    Felicidades a los ganadores
+                  </p>
                 </div>
                 <button
                   onClick={() => setShowFeDeErratas(false)}
-                  className="text-amber-400/60 hover:text-amber-300 text-lg shrink-0 leading-none"
+                  className="text-yellow-400/60 hover:text-yellow-300 text-lg shrink-0 leading-none"
                 >
                   ×
                 </button>
               </div>
-              <style jsx>{`
-                .marquee-container {
-                  overflow: hidden;
-                  white-space: nowrap;
-                }
-                .marquee-text {
-                  display: inline-block;
-                  animation: marquee 12s linear infinite;
-                }
-                @keyframes marquee {
-                  0% { transform: translateX(100%); }
-                  100% { transform: translateX(-100%); }
-                }
-              `}</style>
             </div>
           )}
 

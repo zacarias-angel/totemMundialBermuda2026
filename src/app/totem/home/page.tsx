@@ -2,14 +2,13 @@ import Link from 'next/link'
 export const dynamic = 'force-dynamic'
 import { Suspense } from 'react'
 import { InactivityGuard } from '@/components/totem/InactivityGuard'
-import { RankingTable } from '@/components/totem/RankingTable'
-import { RankingAutoRefresh } from '@/components/totem/RankingAutoRefresh'
 import { QRCode } from '@/components/ui/QRCode'
 import { HoyManana } from '@/components/totem/HoyManana'
-import { RankingSkeleton, MatchesSkeleton } from '@/components/totem/Skeletons'
+import { MatchesSkeleton } from '@/components/totem/Skeletons'
 import { getMatchesByDate } from '@/services/fixture'
 import { FotoCarousel } from '@/components/totem/FotoCarousel'
 import { FeDeErratas } from '@/components/totem/FeDeErratas'
+import { Podium } from '@/components/totem/Podium'
 
 export default async function TotemHome() {
   const url = process.env.NEXT_PUBLIC_APP_URL ?? 'http://192.168.0.127:3000/mobile'
@@ -29,13 +28,11 @@ export default async function TotemHome() {
       <div className="mx-auto w-full max-w-3xl px-5 pb-16 pt-20 sm:px-8">
         <header className="animate-rise mb-7">
           <div className="mb-2 inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.04] px-3 py-1">
-            <span className="h-1.5 w-1.5 animate-pulse rounded-full bg-emerald-400" />
-            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/55">En vivo</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-yellow-400" />
+            <span className="text-[11px] font-medium uppercase tracking-[0.18em] text-white/55">Finalizado</span>
           </div>
-          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Ranking</h1>
+          <h1 className="text-4xl font-bold tracking-tight sm:text-5xl">Podio</h1>
         </header>
-
-        <RankingAutoRefresh />
 
         {/* Join card */}
         <section
@@ -62,17 +59,13 @@ export default async function TotemHome() {
         {/* Fe de Erratas */}
         <FeDeErratas />
 
+        {/* Podium */}
+        <Podium />
+
         {/* Foto Carousel */}
         <Suspense>
           <FotoCarousel />
         </Suspense>
-
-        {/* Ranking */}
-        <section className="mt-6 mb-7">
-          <Suspense fallback={<RankingSkeleton />}>
-            <RankingTable />
-          </Suspense>
-        </section>
 
         {/* Today / Tomorrow */}
         <section className="animate-rise" style={{ animationDelay: '120ms' }}>

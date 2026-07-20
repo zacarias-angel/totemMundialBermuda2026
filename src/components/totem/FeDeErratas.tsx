@@ -8,15 +8,15 @@ export function FeDeErratas() {
   if (!visible) return null
 
   return (
-    <section className="animate-rise mb-5 rounded-xl border border-amber-500/40 bg-amber-500/10 px-4 py-3" style={{ animationDelay: '50ms' }}>
+    <section className="animate-rise mb-5 rounded-xl border border-yellow-400/50 bg-yellow-400/10 px-4 py-3" style={{ animationDelay: '50ms' }}>
       <div className="flex items-center gap-3">
-        <span className="text-lg shrink-0">📢</span>
-        <p className="flex-1 text-amber-200 text-xs sm:text-sm leading-relaxed">
-          <strong className="text-amber-100">Fe de erratas:</strong> Debido a que Angel se durmió y no cargó los octavos, Canadá vs. Marruecos se da por acertado.
+        <span className="text-lg shrink-0">🏆</span>
+        <p className="flex-1 text-yellow-200 text-xs sm:text-sm leading-relaxed font-medium">
+          Felicidades a los ganadores
         </p>
         <button
           onClick={() => setVisible(false)}
-          className="text-amber-400/60 hover:text-amber-300 text-base shrink-0 px-1"
+          className="text-yellow-400/60 hover:text-yellow-300 text-base shrink-0 px-1"
         >
           ×
         </button>
